@@ -1,0 +1,297 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.52
+     from ../texi/accounting.texi on 7 November 1998 -->
+
+<TITLE>Accounting Utilities Manual - ac</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="accounting_1.html">first</A>, <A HREF="accounting_1.html">previous</A>, <A HREF="accounting_3.html">next</A>, <A HREF="accounting_6.html">last</A> section, <A HREF="accounting_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H1><A NAME="SEC4" HREF="accounting_toc.html#TOC4"><CODE>ac</CODE></A></H1>
+<P>
+<A NAME="IDX1"></A>
+<A NAME="IDX2"></A>
+
+</P>
+<P>
+The <CODE>ac</CODE> command prints out a report of connect time (in hours)
+based on the logins/logouts in the current <CODE>wtmp</CODE> file.
+A total is also printed out.
+
+</P>
+<P>
+The accounting file <CODE>wtmp</CODE> is maintained by <CODE>init</CODE>
+and <CODE>login</CODE>.  Neither of these programs creates the file; if the
+file is not there, no accounting is done.  To begin accounting, create
+the file with a length of zero.  <STRONG>NOTE:</STRONG> the
+<CODE>wtmp</CODE> file can get really big, really fast.  You might
+want to trim it every once and a while.
+
+</P>
+<P>
+GNU <CODE>ac</CODE> works nearly the same u*x <CODE>ac</CODE>, though it's a little
+smarter in its printing out of daily totals--it actually prints
+<EM>every</EM> day, rather than skipping to the date of the next entry in
+the <CODE>wtmp</CODE> file.
+
+</P>
+
+
+<H2><A NAME="SEC5" HREF="accounting_toc.html#TOC5">Flags</A></H2>
+
+<P>
+All of the original <CODE>ac</CODE>'s options have been implemented, and a few have
+been added.  Normally, when <CODE>ac</CODE> is invoked, the output looks like
+this:
+
+<PRE>
+        total 93867.14
+</PRE>
+
+<P>
+where total is the number of hours of connect time for every entry in
+the <CODE>wtmp</CODE> file.  The rest of the flags modify the
+output in one way or another.
+
+</P>
+<DL COMPACT>
+
+<DT><CODE>-d</CODE>
+<DD>
+<DT><CODE>--daily-totals</CODE>
+<DD>
+Print totals for each day rather than just one big total at the end.
+The output looks like this:
+
+<PRE>
+Jul  3  total     1.17
+Jul  4  total     2.10
+Jul  5  total     8.23
+Jul  6  total     2.10
+Jul  7  total     0.30
+</PRE>
+
+<DT><CODE>-p</CODE>
+<DD>
+<DT><CODE>--individual-totals</CODE>
+<DD>
+Print time totals for each user in addition to the usual
+everything-lumped-into-one value.  It looks like:
+
+<PRE>
+        bob       8.06
+        goff      0.60
+        maley     7.37
+        root      0.12
+        total    16.15
+</PRE>
+
+<DT><CODE><VAR>people</VAR></CODE>
+<DD>
+Print out the sum total of the connect time used by all of the users
+included in people.  Note that people is a space separated list of valid
+user names; wildcards are not allowed.
+
+<DT><CODE>-f <VAR>filename</VAR></CODE>
+<DD>
+<DT><CODE>--file <VAR>filename</VAR></CODE>
+<DD>
+Read from the file <VAR>filename</VAR> instead of the system's
+<CODE>wtmp</CODE> file.
+
+<DT><CODE>--complain</CODE>
+<DD>
+When the <CODE>wtmp</CODE> file has a problem (a time-warp, missing
+record, or whatever), print out an appropriate error.
+
+<DT><CODE>--reboots</CODE>
+<DD>
+Reboot records are <EM>not</EM> written at the time of a reboot, but when
+the system restarts; therefore, it is impossible to know <VAR>exactly</VAR>
+when the reboot occurred.  Users may have been logged into the system at
+the time of the reboot, and many <CODE>ac</CODE>'s automatically count the
+time between the login and the reboot record against the user (even
+though all of that time <EM>shouldn't</EM> be, perhaps, if the system is
+down for a long time, for instance).  If you want to count this time,
+include the flag.  <STRONG>To make <CODE>ac</CODE> behave like the one that
+was distributed with your OS, include this flag.</STRONG>
+
+<DT><CODE>--supplants</CODE>
+<DD>
+Sometimes a logout record is not written for a specific terminal, so the
+time that the last user accrued cannot be calculated.  If you want to
+include the time from the user's login to the next login on the terminal
+(though probably incorrect), include this flag.  <STRONG>To make
+<CODE>ac</CODE> behave like the one that was distributed with your OS, include
+this flag.</STRONG>
+
+<DT><CODE>--timewarps</CODE>
+<DD>
+Sometimes, entries in a <CODE>wtmp</CODE> file will suddenly jump
+back into the past without a clock change record occurring.  It is
+impossible to know how long a user was logged in when this occurs.  If
+you want to count the time between the login and the time warp against
+the user, include this flag.  <STRONG>To make <CODE>ac</CODE> behave like the
+one that was distributed with your OS, include this flag.</STRONG>
+
+<DT><CODE>--compatibility</CODE>
+<DD>
+This is shorthand for typing out the three above options.
+
+<DT><CODE>-a</CODE>
+<DD>
+<DT><CODE>--all-days</CODE>
+<DD>
+If we're printing daily totals, print a record for every day instead of
+skipping intervening days where there is no login activity.  Without
+this flag, time accrued during those intervening days gets listed under
+the next day where there is login activity.
+
+<DT><CODE>-y</CODE>
+<DD>
+<DT><CODE>--print-year</CODE>
+<DD>
+Print out the year when displaying dates.
+
+<DT><CODE>--print-zeros</CODE>
+<DD>
+If a total for any category (save the grand total) is zero, print it.
+The default is to suppress printing.
+
+<DT><CODE>--debug</CODE>
+<DD>
+Print verbose internal information.
+
+<DT><CODE>--tw-leniency <VAR>value</VAR></CODE>
+<DD>
+Set the time warp leniency value (in seconds).  Records in
+<CODE>wtmp</CODE> files might be slightly out of order (most
+notably when two logins occur within a one-second period -- the second
+one gets written first).  By default, this value is set to 1 second.
+Some <CODE>wtmp</CODE>'s are really screwed up (Suns) and require a
+larger value here.  If the program notices this problem, time is not
+assigned to users unless the <CODE>--timewarps</CODE> flag is used.  See the
+Problems section for more information.
+
+<DT><CODE>--tw-suspicious <VAR>value</VAR></CODE>
+<DD>
+Set the time warp suspicious value (in seconds).  If two records in the
+<CODE>wtmp</CODE> file are farther than this number of seconds
+apart, there is a problem with the wtmp file (or your machine
+hasn't been used in a year).  If the program notices this problem, time
+is not assigned to users unless the <CODE>--timewarps</CODE> flag is used.
+
+<DT><CODE>-V</CODE>
+<DD>
+<DT><CODE>--version</CODE>
+<DD>
+Print <CODE>ac</CODE>'s version number.
+
+<DT><CODE>-h</CODE>
+<DD>
+<DT><CODE>--help</CODE>
+<DD>
+Print <CODE>ac</CODE>'s usage string and default locations of system files to
+standard output.
+</DL>
+
+
+
+<H2><A NAME="SEC6" HREF="accounting_toc.html#TOC6">Problems</A></H2>
+
+<P>
+For no fault of <CODE>ac</CODE>'s, if two logins occur at the same time
+(within a second of each other), each <CODE>login</CODE> process will try to
+write an entry to the <CODE>wtmp</CODE> file.  With file system
+overhead, it is forseeable that the entries would get written in the
+wrong order.  GNU <CODE>ac</CODE> automatically compensates for this, but some
+other <CODE>ac</CODE>s may not...  beware.
+
+</P>
+
+
+<H4><A NAME="SEC7" HREF="accounting_toc.html#TOC7">The FTP Problem</A></H4>
+
+<P>
+I've tested the standard <CODE>ac</CODE> in Ultrix 4.2 (DECstation/DECsystem),
+SunOS 4.1.1 (Sun3, Sun4, Sparc), Mach 2.5 (Omron/Luna), and DomainOS
+10.3 (DN3500).  All of these <CODE>ac</CODE>s have trouble parsing entries in
+which the line is <CODE>ftp</CODE><VAR>xxxx</VAR> (<VAR>xxxx</VAR> being some number).
+Whenever these <CODE>ac</CODE>s see one of these entries, they log everyone
+out at the time of the entry.
+
+</P>
+<P>
+<STRONG>HOW IT HAPPENS:</STRONG> if there is a user logged into the machine when
+an ftp connection occurs, (minimally) you'll get a login record for the
+user, a login record for the ftp connection, and the logouts for both
+afterwards (in either order).
+
+</P>
+<P>
+<STRONG>TANGIBLE RESULT:</STRONG> the user who was logged in gets 'logged out'
+at the time the ftp connection begins, and none of the time spent during
+or after the ftp connection.  Therefore, when you run GNU <CODE>ac</CODE>,
+the totals will most likely be greater than those of your system's
+<CODE>ac</CODE> (provided you specify the other flags that will make GNU
+<CODE>ac</CODE> behave like the system's).
+
+</P>
+
+
+<H4><A NAME="SEC8" HREF="accounting_toc.html#TOC8">The Shutdown/Reboot Problem</A></H4>
+
+<P>
+On Suns, <CODE>init</CODE> is a little screwed up.  For some reason, after a
+shutdown record is written, a reboot record is written with a time-stamp
+<EM>before</EM> the shutdown (less than 30 seconds, usually).
+
+</P>
+<P>
+<STRONG>TANGIBLE RESULT:</STRONG> GNU <CODE>ac</CODE> will notice the problem, log
+everyone out (you can specify if you want the time to be added to the
+user's total) and begin a new day entry based on the time of the
+out-of-sync record.  If you try to print out daily totals, you'll notice
+that some days might have two or more entries.
+
+</P>
+<P>
+<STRONG>SOLUTION:</STRONG> To fix this, a timewarp leniency value has been
+implemented.  If any record is out of order by this number of seconds
+(defaults to 60) it gets ignored.  If you need to change this value (if
+you think the totals are off because the value is too high), you can
+change it using the <SAMP>`--timewarp-value'</SAMP> flag.  The rationale for the
+60 second default is that of all of the machines with this problem, the
+largest timewarp was 45.
+
+</P>
+
+
+<H4><A NAME="SEC9" HREF="accounting_toc.html#TOC9">Stupid System V Machines</A></H4>
+
+<P>
+Some <CODE>ac</CODE>'s on System V machines (I've tried SGI Indigo &#38; SGI Indy)
+forget to pay attention to the <CODE>ut_type</CODE> field in a <CODE>struct
+utmp</CODE>.  As such, they chalk up a lot of time to non-existant processes
+called <CODE>LOGIN</CODE> or <CODE>runlevel</CODE>.  
+
+</P>
+<P>
+<STRONG>TANGIBLE RESULT:</STRONG> The amount of total time reported by the
+system's <CODE>ac</CODE> is <STRONG>really</STRONG> off.  Often, it's several times
+greater than what it should be.
+
+</P>
+<P>
+<STRONG>SOLUTION:</STRONG> GNU <CODE>ac</CODE> always pays attention to the
+<CODE>ut_type</CODE> record, so there's no possibility of chalking up time to
+anything but user processes.
+
+</P>
+<P><HR><P>
+Go to the <A HREF="accounting_1.html">first</A>, <A HREF="accounting_1.html">previous</A>, <A HREF="accounting_3.html">next</A>, <A HREF="accounting_6.html">last</A> section, <A HREF="accounting_toc.html">table of contents</A>.
+</BODY>
+</HTML>

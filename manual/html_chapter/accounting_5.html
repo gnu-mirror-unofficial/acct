@@ -1,0 +1,148 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.52
+     from ../texi/accounting.texi on 7 November 1998 -->
+
+<TITLE>Accounting Utilities Manual - lastcomm</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="accounting_1.html">first</A>, <A HREF="accounting_4.html">previous</A>, <A HREF="accounting_6.html">next</A>, <A HREF="accounting_6.html">last</A> section, <A HREF="accounting_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H1><A NAME="SEC17" HREF="accounting_toc.html#TOC17"><CODE>lastcomm</CODE></A></H1>
+
+<P>
+<CODE>lastcomm</CODE> prints out information about previously executed
+commands.  If no arguments are specified, <CODE>lastcomm</CODE> will print
+info about all of the commands in the <CODE>acct</CODE> file (the
+record file).  If called with a command name, user name, or tty name,
+only records containing those items will be displayed.  For example, to
+find out which users used command <SAMP>`a.out'</SAMP> and which users were
+logged into <SAMP>`tty0'</SAMP>, type:
+
+</P>
+<P>
+<CODE>lastcomm a.out tty0</CODE>
+
+</P>
+<P>
+This will print any entry for which <SAMP>`a.out'</SAMP> or <SAMP>`tty0'</SAMP> matches
+in any of the record's fields (command, name, or tty).  If you want to
+find only items that match ALL of the arguments on the command line, you
+must use the '--strict-match' option.  For example, to list all of the
+executions of command <SAMP>`a.out'</SAMP> by user <SAMP>`root'</SAMP> on terminal
+<SAMP>`tty0'</SAMP>, type:
+
+</P>
+<P>
+<CODE>lastcomm --strict-match a.out root tty0</CODE>
+
+</P>
+<P>
+The order of the arguments is not important.
+
+</P>
+<P>
+For each entry the following information is printed:
+
+</P>
+
+<UL>
+<LI>
+
+command name of the process
+<LI>
+
+flags, as recorded by the system accounting routines:
+
+<UL>
+<LI>
+
+<STRONG>S</STRONG> command executed by super-user
+<LI>
+
+<STRONG>F</STRONG> command executed after a fork but without a following exec
+<LI>
+
+<STRONG>C</STRONG> command run in PDP-11 compatibility mode (VAX only)
+<LI>
+
+<STRONG>D</STRONG> command terminated with the generation of a core file
+<LI>
+
+<STRONG>X</STRONG> command was terminated with the signal SIGTERM
+</UL>
+
+<LI>
+
+the name of the user who ran the process
+<LI>
+
+time the process exited
+</UL>
+
+
+
+<H2><A NAME="SEC18" HREF="accounting_toc.html#TOC18">Flags</A></H2>
+
+<P>
+This program implements the features of regular u*x <CODE>lastcomm</CODE> with
+a few extra flags.  When <CODE>lastcomm</CODE> is invoked without arguments,
+the output looks like this:
+
+<PRE>
+nslookup         jberman  ttypb      0.03 secs Tue Feb 16 19:23
+comsat           root     __         0.03 secs Tue Feb 16 19:19
+uptime           ctilburg __         0.11 secs Tue Feb 16 19:23
+sh          F    ctilburg __         0.02 secs Tue Feb 16 19:23
+sleep            ctilburg __         0.02 secs Tue Feb 16 19:22
+ls               noel     ttyp4      0.19 secs Tue Feb 16 19:23
+</PRE>
+
+<DL COMPACT>
+
+<DT><CODE>--strict-match</CODE>
+<DD>
+Print only entries that match <EM>all</EM> of the arguments on the command
+line.
+
+<DT><CODE>--user <VAR>name</VAR></CODE>
+<DD>
+List records for user with <VAR>name</VAR>.  This is useful if you're trying
+to match a username that happens to be the same as a command (e.g.,
+<CODE>ed</CODE>).
+
+<DT><CODE>--command <VAR>name</VAR></CODE>
+<DD>
+List records for command <VAR>name</VAR>.
+
+<DT><CODE>--tty <VAR>name</VAR></CODE>
+<DD>
+List records for tty <VAR>name</VAR>.
+
+<DT><CODE>-f <VAR>filename</VAR></CODE>
+<DD>
+<DT><CODE>--file <VAR>filename</VAR></CODE>
+<DD>
+Read from the file <VAR>filename</VAR> instead of the system's
+<CODE>acct</CODE> file.
+
+<DT><CODE>--debug</CODE>
+<DD>
+Print verbose internal information.
+
+<DT><CODE>--version</CODE>
+<DD>
+Print <CODE>lastcomm</CODE>'s version number.
+
+<DT><CODE>--help</CODE>
+<DD>
+Print <CODE>lastcomm</CODE>'s usage string and default locations of system
+files to standard output.
+</DL>
+
+<P><HR><P>
+Go to the <A HREF="accounting_1.html">first</A>, <A HREF="accounting_4.html">previous</A>, <A HREF="accounting_6.html">next</A>, <A HREF="accounting_6.html">last</A> section, <A HREF="accounting_toc.html">table of contents</A>.
+</BODY>
+</HTML>

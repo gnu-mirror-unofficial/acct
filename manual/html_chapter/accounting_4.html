@@ -1,0 +1,196 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.52
+     from ../texi/accounting.texi on 7 November 1998 -->
+
+<TITLE>Accounting Utilities Manual - last</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="accounting_1.html">first</A>, <A HREF="accounting_3.html">previous</A>, <A HREF="accounting_5.html">next</A>, <A HREF="accounting_6.html">last</A> section, <A HREF="accounting_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H1><A NAME="SEC12" HREF="accounting_toc.html#TOC12"><CODE>last</CODE></A></H1>
+
+<P>
+<CODE>last</CODE> looks through the <CODE>wtmp</CODE> file (which records
+all logins/logouts) and prints information about connect times of users.
+Records are printed from most recent to least recent.  Records can be
+specified by tty and username.  tty names can be abbreviated: <SAMP>`last
+0'</SAMP> is equivalent to <SAMP>`last tty0'</SAMP>.
+
+</P>
+<P>
+Multiple arguments can be specified: <SAMP>`last root console'</SAMP> will print
+all of the entries for the user <CODE>root</CODE> and all entries logged in on
+the <CODE>console</CODE> tty.
+
+</P>
+<P>
+The special users <CODE>reboot</CODE> and <CODE>shutdown</CODE> log in when the
+system reboots or (surprise) shuts down.  <SAMP>`last reboot'</SAMP> will
+produce a record of reboot times.
+
+</P>
+<P>
+If <CODE>last</CODE> is interrupted by a quit signal, it prints out how far
+its search in the <CODE>wtmp</CODE> file had reached and then
+quits:
+
+<PRE>
+weerapan  ttyq6    132.162.32.37    Mon Feb 15 19:07 - 19:21  (00:13)
+weerapan  ttyq6    132.162.32.37    Mon Feb 15 19:07 - 19:21  (00:13)
+
+interrupted at Mon Feb 15 19:07:52 1993
+</PRE>
+
+
+
+<H2><A NAME="SEC13" HREF="accounting_toc.html#TOC13">Flags</A></H2>
+
+<P>
+This program implements the features of regular u*x <CODE>last</CODE> with a few
+extra flags.  When <CODE>last</CODE> is invoked with no arguments, the output
+looks like this:
+
+<PRE>
+gr151     ttyp2    ray.cs.oberlin.e Tue Feb 16 17:40   still logged in
+jhoggard  ttyp2    csts.cs.oberlin. Tue Feb 16 17:39 - 17:39  (00:00)
+jstarr    ttyp1    UNIX5.ANDREW.CMU Tue Feb 16 17:38   still logged in
+jberman   ttypb    132.162.32.25    Tue Feb 16 17:34   still logged in
+alee      ttyp7    csts.cs.oberlin. Tue Feb 16 17:34   still logged in
+jbrick    ttyp2    ocvaxa.cc.oberli Tue Feb 16 17:33 - 17:36  (00:03)
+mbastedo  ttypc    ocvaxa.cc.oberli Tue Feb 16 17:25 - 17:26  (00:01)
+rgoodste  ttypb    ocvaxa.cc.oberli Tue Feb 16 17:22 - 17:26  (00:03)
+huttar    ttyp9    lobby.ti.com     Tue Feb 16 17:19   still logged in
+klutz     ttyp3    132.162.32.25    Tue Feb 16 17:14   still logged in
+</PRE>
+
+<DL COMPACT>
+
+<DT><CODE>--no-truncate-ftp-entries</CODE>
+<DD>
+When printing out the information, don't chop the number part off of
+<CODE>ftp</CODE><VAR>xxxx</VAR> entries.
+
+<DT><CODE>-<VAR>number</VAR></CODE>
+<DD>
+<DT><CODE>-n <VAR>number</VAR></CODE>
+<DD>
+<DT><CODE>--lines <VAR>number</VAR></CODE>
+<DD>
+Limit the number of lines that <CODE>last</CODE> prints.
+
+<DT><CODE>-f <VAR>filename</VAR></CODE>
+<DD>
+<DT><CODE>--file <VAR>filename</VAR></CODE>
+<DD>
+Read from the file <VAR>filename</VAR> instead of the system's
+<CODE>wtmp</CODE> file.
+
+<DT><CODE>-y</CODE>
+<DD>
+<DT><CODE>--print-year</CODE>
+<DD>
+Print out the year when displaying dates.
+
+<DT><CODE>-s</CODE>
+<DD>
+<DT><CODE>--print-seconds</CODE>
+<DD>
+Print out seconds when displaying dates and durations.
+
+<DT><CODE>--complain</CODE>
+<DD>
+When the <CODE>wtmp</CODE> file has a problem (a time-warp, missing
+record, or whatever), print out an appropriate error.
+
+<DT><CODE>-x</CODE>
+<DD>
+<DT><CODE>--more-records</CODE>
+<DD>
+Print out run level changes, shutdowns, and time changes in addition to
+the normal records.
+
+<DT><CODE>-a</CODE>
+<DD>
+<DT><CODE>--all-records</CODE>
+<DD>
+Print out all records in the <CODE>wtmp</CODE> file.
+
+<DT><CODE>-i</CODE>
+<DD>
+<DT><CODE>--ip-address</CODE>
+<DD>
+Some machines store the IP address of a connection in a utmp record.
+Enabling this option makes <CODE>last</CODE> print the IP address instead of
+the hostname.
+
+<DT><CODE>--tw-leniency <VAR>value</VAR></CODE>
+<DD>
+Set the time warp leniency value (in seconds).  See the <CODE>ac</CODE>
+chapter for information.
+
+<DT><CODE>--tw-suspicious <VAR>value</VAR></CODE>
+<DD>
+Set the time warp suspicious value (in seconds).  See the <CODE>ac</CODE>
+chapter for information.
+
+<DT><CODE>--debug</CODE>
+<DD>
+Print verbose internal information.
+
+<DT><CODE>-V</CODE>
+<DD>
+<DT><CODE>--version</CODE>
+<DD>
+Print <CODE>last</CODE>'s version number.
+
+<DT><CODE>-h</CODE>
+<DD>
+<DT><CODE>--help</CODE>
+<DD>
+Print <CODE>last</CODE>'s usage string and default locations of system files
+to standard output.
+</DL>
+
+
+
+<H2><A NAME="SEC14" HREF="accounting_toc.html#TOC14">Problems</A></H2>
+
+
+
+<H4><A NAME="SEC15" HREF="accounting_toc.html#TOC15">The Clock Change Problem</A></H4>
+
+<P>
+Of the <CODE>last</CODE>s I've tried, all of them have had problems parsing a
+system clock change.  Instead of modifying the entries that have been
+read, they just ignore the change and give you incorrect values.  GNU
+<CODE>last</CODE> knows about clock changes and prints the correct times.
+
+</P>
+<P>
+<STRONG>TANGIBLE RESULT:</STRONG> if you <CODE>diff</CODE> the output of your
+<CODE>last</CODE> and GNU <CODE>last</CODE>, entries after (before, rather) a clock
+change will be off by the amount of the clock change.
+
+</P>
+
+
+<H4><A NAME="SEC16" HREF="accounting_toc.html#TOC16">The Ftp Problem</A></H4>
+
+<P>
+Most <CODE>last</CODE>s that I've examined have the same problem here as
+<CODE>ac</CODE> does--they log everyone out as soon as they see an ftp entry.
+
+</P>
+<P>
+<STRONG>TANGIBLE RESULT:</STRONG> GNU <CODE>last</CODE> will reflect the correct time
+spent in an ftp session, so the totals that it gives will most likely be
+greater than those given by the system <CODE>last</CODE>.
+
+</P>
+<P><HR><P>
+Go to the <A HREF="accounting_1.html">first</A>, <A HREF="accounting_3.html">previous</A>, <A HREF="accounting_5.html">next</A>, <A HREF="accounting_6.html">last</A> section, <A HREF="accounting_toc.html">table of contents</A>.
+</BODY>
+</HTML>

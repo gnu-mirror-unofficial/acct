@@ -1,0 +1,285 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.52
+     from ../texi/accounting.texi on 7 November 1998 -->
+
+<TITLE>Accounting Utilities Manual - sa</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="accounting_1.html">first</A>, <A HREF="accounting_5.html">previous</A>, next, last section, <A HREF="accounting_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H1><A NAME="SEC19" HREF="accounting_toc.html#TOC19"><CODE>sa</CODE></A></H1>
+
+<P>
+<CODE>sa</CODE> summarizes information about previously executed commands as
+recorded in the <CODE>acct</CODE> file.  In addition, it condenses this data
+into the <CODE>savacct</CODE> summary file, which contains the
+number of times the command was called and the system resources used.
+The information can also be summarized on a per-user basis; <CODE>sa</CODE>
+will save this information into <CODE>usracct</CODE>.  Usage:
+
+</P>
+<P>
+<CODE>sa [<VAR>opts</VAR>] [<VAR>file</VAR>]</CODE>
+
+</P>
+<P>
+If no arguments are specified, <CODE>sa</CODE> will print information about
+all of the commands in the <CODE>acct</CODE> file.  If command
+names have unprintable characters, or are only called once, <CODE>sa</CODE>
+will sort them into a group called <CODE>***other</CODE>.
+
+</P>
+<P>
+If called with a file name as the last argument, <CODE>sa</CODE> will use that
+file instead of <CODE>acct</CODE>.
+
+</P>
+<P>
+By default, <CODE>sa</CODE> will sort the output by sum of user and system
+time.
+
+</P>
+<P>
+The output fields are labeled as follows:
+
+</P>
+<DL COMPACT>
+
+<DT><CODE>cpu</CODE>
+<DD>
+sum of system and user time in cpu seconds
+
+<DT><CODE>re</CODE>
+<DD>
+"real time" in cpu seconds
+
+<DT><CODE>k</CODE>
+<DD>
+cpu-time averaged core usage, in 1k units
+
+<DT><CODE>avio</CODE>
+<DD>
+average number of I/O operations per execution
+
+<DT><CODE>tio</CODE>
+<DD>
+total number of I/O operations
+
+<DT><CODE>k*sec</CODE>
+<DD>
+cpu storage integral (kilo-core seconds)
+
+<DT><CODE>u</CODE>
+<DD>
+user cpu time in cpu seconds
+
+<DT><CODE>s</CODE>
+<DD>
+system time in cpu seconds
+
+</DL>
+
+<P>
+An asterisk will appear after the name of commands that forked but
+didn't call <CODE>exec</CODE>.
+
+</P>
+
+
+<H2><A NAME="SEC20" HREF="accounting_toc.html#TOC20">Flags</A></H2>
+
+<DL COMPACT>
+
+<DT><CODE>-a</CODE>
+<DD>
+<DT><CODE>--list-all-names</CODE>
+<DD>
+Force <CODE>sa</CODE> not to sort those command names with unprintable
+characters and those used only once into the `<CODE>***other</CODE>' group.
+
+<DT><CODE>-b</CODE>
+<DD>
+<DT><CODE>--sort-sys-user-div-calls</CODE>
+<DD>
+Sort the output by the sum of user and system time divided by the number
+of calls.
+
+<DT><CODE>-c</CODE>
+<DD>
+<DT><CODE>--percentages</CODE>
+<DD>
+Print percentages of total time for the command's user, system, and real
+time values.
+
+<DT><CODE>-d</CODE>
+<DD>
+<DT><CODE>--sort-avio</CODE>
+<DD>
+Sort the output by the average number of disk I/O operations.
+
+<DT><CODE>-D</CODE>
+<DD>
+<DT><CODE>--sort-tio</CODE>
+<DD>
+Print and sort the output by the total number of disk I/O operations.
+
+<DT><CODE>-f</CODE>
+<DD>
+<DT><CODE>--not-interactive</CODE>
+<DD>
+When using the <CODE>--threshold</CODE> option, assume that all answers to
+interactive queries will be affirmative.
+
+<DT><CODE>-i</CODE>
+<DD>
+<DT><CODE>--dont-read-summary-file</CODE>
+<DD>
+Don't read the information in <CODE>savacct</CODE>.
+
+<DT><CODE>-j</CODE>
+<DD>
+<DT><CODE>--print-seconds</CODE>
+<DD>
+Instead of printing total minutes for each category, print seconds per
+call.
+
+<DT><CODE>-k</CODE>
+<DD>
+<DT><CODE>--sort-cpu-avmem</CODE>
+<DD>
+Sort the output by cpu time average memory usage.
+
+<DT><CODE>-K</CODE>
+<DD>
+<DT><CODE>--sort-ksec</CODE>
+<DD>
+Print and sort the output by the cpu-storage integral.
+
+<DT><CODE>-l</CODE>
+<DD>
+<DT><CODE>--separate-times</CODE>
+<DD>
+Print separate columns for system and user time; usually the two are
+added together and listed as <CODE>cpu</CODE>.
+
+<DT><CODE>-m</CODE>
+<DD>
+<DT><CODE>--user-summary</CODE>
+<DD>
+Print the number of processes and number of CPU minutes on a per-user
+basis.
+
+<DT><CODE>-n</CODE>
+<DD>
+<DT><CODE>--sort-num-calls</CODE>
+<DD>
+Sort the output by the number of calls.  This is the default sorting
+method.
+
+<DT><CODE>-r</CODE>
+<DD>
+<DT><CODE>--reverse-sort</CODE>
+<DD>
+Sort output items in reverse order.
+
+<DT><CODE>-s</CODE>
+<DD>
+<DT><CODE>--merge</CODE>
+<DD>
+Merge the summarized accounting data into the summary files
+<CODE>savacct</CODE> and <CODE>usracct</CODE>.
+
+<DT><CODE>-t</CODE>
+<DD>
+<DT><CODE>--print-ratio</CODE>
+<DD>
+For each entry, print the ratio of real time to the sum of system and
+user times.  If the sum of system and user times is too small to
+report--the sum is zero---<CODE>*ignore*</CODE> will appear in this field.
+
+<DT><CODE>-u</CODE>
+<DD>
+<DT><CODE>--print-users</CODE>
+<DD>
+For each command in the accounting file, print the userid and command
+name.  After printing all entries, quit.  <STRONG>Note</STRONG>: this flag
+supersedes all others.
+
+<DT><CODE>-v <VAR>num</VAR></CODE>
+<DD>
+<DT><CODE>--threshold <VAR>num</VAR></CODE>
+<DD>
+Print commands which were executed <VAR>num</VAR> times or fewer and await a
+reply from the terminal.  If the response begins with <CODE>y</CODE>, add the
+command to the <CODE>**junk**</CODE> group.
+
+<DT><CODE>--separate-forks</CODE>
+<DD>
+It really doesn't make any sense to me that the stock version of
+<CODE>sa</CODE> separates statistics for a particular executable depending on
+whether or not that command forked.  Therefore, GNU <CODE>sa</CODE> lumps this
+information together unless this option is specified.
+
+<DT><CODE>--sort-real-time</CODE>
+<DD>
+Sort the output by the "real time" (elapsed time) for each command.
+
+<DT><CODE>--debug</CODE>
+<DD>
+Print verbose internal information.
+
+<DT><CODE>-V</CODE>
+<DD>
+<DT><CODE>--version</CODE>
+<DD>
+Print <CODE>sa</CODE>'s version number.
+
+<DT><CODE>-h</CODE>
+<DD>
+<DT><CODE>--help</CODE>
+<DD>
+Print <CODE>sa</CODE>'s usage string and default locations of system files to
+standard output.
+</DL>
+
+<P>
+<STRONG>Note</STRONG>: if more than one sorting option is specified, the list
+will be sorted by the one specified last on the command line.
+
+</P>
+
+
+<H2><A NAME="SEC21" HREF="accounting_toc.html#TOC21">Problems</A></H2>
+
+<P>
+I haven't been able to test this on many different machines because the
+data files grow so big in a short time; our sysadmin would rather save
+the disk space.
+
+</P>
+<P>
+Most versions of <CODE>sa</CODE> that I've tested don't pay attention to flags
+like <CODE>--print-seconds</CODE> and <CODE>--sort-num-calls</CODE> when printing
+out commands when combined with the <CODE>--user-summary</CODE> or
+<CODE>--print-users</CODE> flags.  GNU <CODE>sa</CODE> pays attention to these flags
+if they are applicable.
+
+</P>
+
+
+<H3><A NAME="SEC22" HREF="accounting_toc.html#TOC22">mips sa</A></H3>
+
+<P>
+The average memory use is stored as a short rather than a double, so we
+suffer from round-off errors.  GNU <CODE>sa</CODE> uses double the whole way
+through.
+
+</P>
+
+<P><HR><P>
+Go to the <A HREF="accounting_1.html">first</A>, <A HREF="accounting_5.html">previous</A>, next, last section, <A HREF="accounting_toc.html">table of contents</A>.
+</BODY>
+</HTML>

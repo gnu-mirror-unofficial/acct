@@ -1,0 +1,258 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.52
+     from ../texi/accounting.texi on 7 November 1998 -->
+
+<TITLE>Accounting Utilities Manual - Preface</TITLE>
+</HEAD>
+<BODY>
+Go to the first, previous, <A HREF="accounting_2.html">next</A>, <A HREF="accounting_6.html">last</A> section, <A HREF="accounting_toc.html">table of contents</A>.
+<P><HR><P>
+
+<P>
+Copyright (C) 1993, 1996, 1997 Free Software Foundation,
+Inc.
+
+</P>
+<P>
+Permission is granted to make and distribute verbatim copies of
+this manual provided the copyright notice and this permission notice
+are preserved on all copies.
+
+</P>
+<P>
+Permission is granted to copy and distribute modified versions of this
+manual under the conditions for verbatim copying, provided that the
+entire resulting derived work is distributed under the terms of a
+permission notice identical to this one.
+
+</P>
+<P>
+Permission is granted to copy and distribute translations of this manual
+into another language, under the above conditions for modified versions,
+except that this permission notice may be stated in a translation
+approved by the Foundation.
+
+</P>
+
+
+
+<H1><A NAME="SEC1" HREF="accounting_toc.html#TOC1">Preface</A></H1>
+
+<P>
+Way back a long time ago, Thompson and Ritchie were sitting opposite one
+another at the commissary, sipping coffees and discussing their evolving
+behemoth.
+
+</P>
+<P>
+"This behemoth of ours," said Ken, "is becoming rather popular,
+wouldn't you say?"  "Yes," said Dennis.  "Every time I want to do a
+compilation, I have to wait for hours and hours.  It's infuriating."
+They both agreed that the load on their system was too great.  Both
+sighed, picked up their mugs, and went back to the workbench.  Little
+did they know that an upper-management type was sitting just within
+earshot of their conversation.
+
+</P>
+<P>
+"We are AT&#38;T Bell Laboratories, aren't we?" the upper-management type
+thought to himself.  "Well, what is our organization best known for?"
+The brill-cream in his hair glistened.  "Screwing people out of lots of
+money, of course!  If there were some way that we could keep tabs on
+users and charge them through the nose for their CPU time..."
+
+</P>
+<P>
+The accounting utilities were born.
+
+</P>
+<P>
+Seriously though, the accouting utilities can provide a system
+administrator with useful information about system usage--connections,
+programs executed, and utilization of system resources.
+
+</P>
+<P>
+Information about users--their connect time, location, programs
+executed, and the like--is automatically recored in files by
+<CODE>init</CODE> and <CODE>login</CODE>.  Four of them are of interest to us:
+<CODE>wtmp</CODE>, which has records for each login and logout;
+<CODE>acct</CODE>, which records each command that was run;
+<CODE>usracct</CODE> and <CODE>savacct</CODE>, which contain
+summaries of the information in <CODE>acct</CODE> by user and
+command, respectively.  Each of the accounting utilities reports or
+summarizes information stored in these files.
+
+</P>
+<DL COMPACT>
+
+<DT><CODE>ac</CODE>
+<DD>
+prints statistics about users' connect time.  <CODE>ac</CODE> can tell you how
+long a particular user or group of users were connected to your system,
+printing totals by day or for all of the entries in the
+<CODE>wtmp</CODE> file.
+
+<DT><CODE>accton</CODE>
+<DD>
+turns accounting on or off.
+
+<DT><CODE>last</CODE>
+<DD>
+lists the logins on the system, most recent first.  With <CODE>last</CODE>,
+you can search the <CODE>wtmp</CODE> file for a particular user or
+terminal name (to which the user was connected).  Of special interest
+are two fake users, <SAMP>`reboot'</SAMP> and <SAMP>`shutdown'</SAMP>, which are
+recorded when the system is shut down or reboots.
+
+<DT><CODE>lastcomm</CODE>
+<DD>
+lists the commands executed on the system, most recent first, showing
+the run state of each command.  With <CODE>last</CODE>, you can search the
+<CODE>acct</CODE> file for a particular user, terminal, or command.
+
+<DT><CODE>sa</CODE>
+<DD>
+summarizes the information in the <CODE>acct</CODE> file into the
+<CODE>savacct</CODE> and <CODE>usracct</CODE> file.  It also
+generates reports about commands, giving the number of invocations, cpu
+time used, average core usage, etc.
+
+<DT><CODE>dump-acct</CODE>
+<DD>
+<DT><CODE>dump-utmp</CODE>
+<DD>
+display <CODE>acct</CODE> and <CODE>utmp</CODE> files in a human-readable format.
+
+</DL>
+
+<P>
+For more detailed information on any of these programs, check the
+chapter with the program title.
+
+</P>
+
+
+<H2><A NAME="SEC2" HREF="accounting_toc.html#TOC2">A Note on File Names and Locations</A></H2>
+
+<P>
+The <CODE>wtmp</CODE> and <CODE>acct</CODE> files seem to live in different places
+and have different names for every variant of u*x that exists.  The name
+<CODE>wtmp</CODE> seems to be standard for the login accounting file, but the
+process accounting file might be <CODE>acct</CODE> or <CODE>pacct</CODE> on your
+system.  To find the actual locations and names of these files on your
+system, specify the <CODE>--help</CODE> flag to any of the programs in this
+package and the information will dumped to standard output.
+
+</P>
+<P>
+Regardless of the names and locations of files on your system, this
+manual will refer to the login accounting file as <CODE>wtmp</CODE> and the
+process accounting files as <CODE>acct</CODE>, <CODE>savacct</CODE>, and
+<CODE>usracct</CODE>.
+
+</P>
+
+
+<H2><A NAME="SEC3" HREF="accounting_toc.html#TOC3">History of the Accounting Utilities</A></H2>
+
+<P>
+I don't have any idea who originally wrote these utilities.  If anybody
+does, please send some mail to <CODE>noel@gnu.ai.mit.edu</CODE> and I'll add
+your information here!
+
+</P>
+<P>
+Since the first alpha versions of this software in late 1993, many
+people have contributed to the package.  They are (in alphabetical
+order):
+
+</P>
+
+<DL COMPACT>
+
+<DT><CODE>Eric Backus &#60;ericb@lsid.hp.com&#62;</CODE>
+<DD>
+Suggested fixes for HP-UX 9.05 using /bin/cc: configure assumed you were
+using <CODE>gcc</CODE> and tacked on <CODE>-Wall</CODE> etc.  He also noticed that
+<CODE>file_rd.c</CODE> was doing pointer arithmetic on a <CODE>void *</CODE> pointer
+(non-ANSI).
+
+<DT><CODE>Christoph Badura &#60;bad@flatlin.ka.sub.org&#62;</CODE>
+<DD>
+Christoph was a BIG HELP in computing statistics, most notably k*sec
+stuff!  He also did Xenix testing and contributed some Makefile fixes
+and output optimizations.
+
+<DT><CODE>Michael Calwas &#60;calwas@ttd.teradyne.com&#62;</CODE>
+<DD>
+Fixed bugs in mktime.c.
+
+<DT><CODE>Alan Cox &#60;iiitac@pyr.swan.ac.uk&#62;</CODE>
+<DD>
+Original Linux kernel accounting patches.
+
+<DT><CODE>Scott Crosby &#60;root@hypercube.res.cmu.edu&#62;</CODE>
+<DD>
+Suggested idea behind <CODE>--sort-real-time</CODE> for <CODE>sa</CODE>.
+
+<DT><CODE>Solar Designer &#60;solar@false.com&#62;</CODE>
+<DD>
+Fixed off-by one error in allocations in <CODE>sa</CODE>.
+
+<DT><CODE>Dirk Eddelbuettel &#60;edd@miles.econ.queensu.ca&#62;</CODE>
+<DD>
+Managed bug-fixes &#38; etc. for Debian distribution, as well as the
+architect of merge of GNU + Debian distributions.  A big thanks to Dirk
+for kicking me back into gear again after a long period of no work on
+this project.
+
+<DT><CODE>Jason Grant &#60;jamalcol@pc-5530.bc.rogers.wave.ca&#62;</CODE>
+<DD>
+Identified a buffer-overrun bug in <CODE>sa</CODE>.
+
+<DT><CODE>Kaveh R. Ghazi &#60;ghazi@caip.rutgers.edu&#62;</CODE>
+<DD>
+Tested the package on many systems with compilers other than gcc.  Fixed
+K&#38;R C support.
+
+<DT><CODE>Susan Kleinmann &#60;sgk@sgk.tiac.net&#62;</CODE>
+<DD>
+Contributed excellent man pages!
+
+<DT><CODE>Marek Michalkiewicz &#60;marekm@i17linuxb.ists.pwr.wroc.pl&#62;</CODE>
+<DD>
+Suggested the <CODE>--ip-address</CODE> flag for <CODE>last</CODE>.
+
+<DT><CODE>David S. Miller &#60;davem@caip.rutgers.edu&#62;</CODE>
+<DD>
+Noticed missing GNU-standard makefile rules.
+
+<DT><CODE>Walter Mueller &#60;walt@pi4.informatik.uni-mannheim.de&#62;</CODE>
+<DD>
+Noticed install target was missing, and corrected a typo for prefix in
+Makefile.in.
+
+<DT><CODE>Ian Murdock &#60;imurdock@gnu.ai.mit.edu&#62;</CODE>
+<DD>
+Tracked down miscellaneous bugs in sa.c under Linux.  Added Debian
+package maintenance files.
+
+<DT><CODE>Luc I. Suryo &#60;root@patriots.nl.mugnet.org&#62;</CODE>
+<DD>
+Suggested the <CODE>--user</CODE> flag for <CODE>lastcomm</CODE>.
+
+<DT><CODE>Pedro A M Vazquez &#60;vazquez@iqm.unicamp.br&#62;</CODE>
+<DD>
+Fixed bugs in sa.c and tested under FreeBSD.
+
+<DT><CODE>Marco van Wieringen &#60;Marco.van.Wieringen@mcs.nl.mugnet.org&#62;</CODE>
+<DD>
+Modified (wrote?) Linux kernel accounting patches.
+</DL>
+
+<P><HR><P>
+Go to the first, previous, <A HREF="accounting_2.html">next</A>, <A HREF="accounting_6.html">last</A> section, <A HREF="accounting_toc.html">table of contents</A>.
+</BODY>
+</HTML>
