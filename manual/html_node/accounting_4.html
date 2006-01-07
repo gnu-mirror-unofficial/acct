@@ -1,196 +1,141 @@
-<HTML>
-<HEAD>
-<!-- This HTML file has been created by texi2html 1.52
-     from ../texi/accounting.texi on 7 November 1998 -->
+<html lang="en">
+<head>
+<title>last - Accounting Utilities Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Accounting Utilities Manual">
+<meta name="generator" content="makeinfo 4.8">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="accton.html#accton" title="accton">
+<link rel="next" href="lastcomm.html#lastcomm" title="lastcomm">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="last"></a>
+n&auml;chstes:&nbsp;<a rel="next" accesskey="n" href="lastcomm.html#lastcomm">lastcomm</a>,
+voriges:&nbsp;<a rel="previous" accesskey="p" href="accton.html#accton">accton</a>,
+aufw&auml;rts:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr>
+</div>
 
-<TITLE>Accounting Utilities Manual - last</TITLE>
-</HEAD>
-<BODY>
-Go to the <A HREF="accounting_1.html">first</A>, <A HREF="accounting_3.html">previous</A>, <A HREF="accounting_5.html">next</A>, <A HREF="accounting_6.html">last</A> section, <A HREF="accounting_toc.html">table of contents</A>.
-<P><HR><P>
+<h2 class="chapter">3 <code>last</code></h2>
 
-
-<H1><A NAME="SEC12" HREF="accounting_toc.html#TOC12"><CODE>last</CODE></A></H1>
-
-<P>
-<CODE>last</CODE> looks through the <CODE>wtmp</CODE> file (which records
-all logins/logouts) and prints information about connect times of users.
+<p><code>last</code> looks through the <code>wtmp</code> file (which records
+all logins/logouts) and prints information about connect times of users. 
 Records are printed from most recent to least recent.  Records can be
-specified by tty and username.  tty names can be abbreviated: <SAMP>`last
-0'</SAMP> is equivalent to <SAMP>`last tty0'</SAMP>.
+specified by tty and username.  tty names can be abbreviated: `<samp><span class="samp">last
+0</span></samp>' is equivalent to `<samp><span class="samp">last tty0</span></samp>'.
 
-</P>
-<P>
-Multiple arguments can be specified: <SAMP>`last root console'</SAMP> will print
-all of the entries for the user <CODE>root</CODE> and all entries logged in on
-the <CODE>console</CODE> tty.
+   <p>Multiple arguments can be specified: `<samp><span class="samp">last root console</span></samp>' will print
+all of the entries for the user <code>root</code> and all entries logged in on
+the <code>console</code> tty.
 
-</P>
-<P>
-The special users <CODE>reboot</CODE> and <CODE>shutdown</CODE> log in when the
-system reboots or (surprise) shuts down.  <SAMP>`last reboot'</SAMP> will
+   <p>The special users <code>reboot</code> and <code>shutdown</code> log in when the
+system reboots or (surprise) shuts down.  `<samp><span class="samp">last reboot</span></samp>' will
 produce a record of reboot times.
 
-</P>
-<P>
-If <CODE>last</CODE> is interrupted by a quit signal, it prints out how far
-its search in the <CODE>wtmp</CODE> file had reached and then
+   <p>If <code>last</code> is interrupted by a quit signal, it prints out how far
+its search in the <code>wtmp</code> file had reached and then
 quits:
+<pre class="example">     weerapan  ttyq6    132.162.32.37    Mon Feb 15 19:07 - 19:21  (00:13)
+     weerapan  ttyq6    132.162.32.37    Mon Feb 15 19:07 - 19:21  (00:13)
+     
+     interrupted at Mon Feb 15 19:07:52 1993
+</pre>
+   <h3 class="section">3.1 Flags</h3>
 
-<PRE>
-weerapan  ttyq6    132.162.32.37    Mon Feb 15 19:07 - 19:21  (00:13)
-weerapan  ttyq6    132.162.32.37    Mon Feb 15 19:07 - 19:21  (00:13)
-
-interrupted at Mon Feb 15 19:07:52 1993
-</PRE>
-
-
-
-<H2><A NAME="SEC13" HREF="accounting_toc.html#TOC13">Flags</A></H2>
-
-<P>
-This program implements the features of regular u*x <CODE>last</CODE> with a few
-extra flags.  When <CODE>last</CODE> is invoked with no arguments, the output
+<p>This program implements the features of regular u*x <code>last</code> with a few
+extra flags.  When <code>last</code> is invoked with no arguments, the output
 looks like this:
+<pre class="example">     gr151     ttyp2    ray.cs.oberlin.e Tue Feb 16 17:40   still logged in
+     jhoggard  ttyp2    csts.cs.oberlin. Tue Feb 16 17:39 - 17:39  (00:00)
+     jstarr    ttyp1    UNIX5.ANDREW.CMU Tue Feb 16 17:38   still logged in
+     jberman   ttypb    132.162.32.25    Tue Feb 16 17:34   still logged in
+     alee      ttyp7    csts.cs.oberlin. Tue Feb 16 17:34   still logged in
+     jbrick    ttyp2    ocvaxa.cc.oberli Tue Feb 16 17:33 - 17:36  (00:03)
+     mbastedo  ttypc    ocvaxa.cc.oberli Tue Feb 16 17:25 - 17:26  (00:01)
+     rgoodste  ttypb    ocvaxa.cc.oberli Tue Feb 16 17:22 - 17:26  (00:03)
+     huttar    ttyp9    lobby.ti.com     Tue Feb 16 17:19   still logged in
+     klutz     ttyp3    132.162.32.25    Tue Feb 16 17:14   still logged in
+</pre>
+     <dl>
+<dt><code>--no-truncate-ftp-entries</code><dd>When printing out the information, don't chop the number part off of
+<code>ftp</code><var>xxxx</var> entries.
 
-<PRE>
-gr151     ttyp2    ray.cs.oberlin.e Tue Feb 16 17:40   still logged in
-jhoggard  ttyp2    csts.cs.oberlin. Tue Feb 16 17:39 - 17:39  (00:00)
-jstarr    ttyp1    UNIX5.ANDREW.CMU Tue Feb 16 17:38   still logged in
-jberman   ttypb    132.162.32.25    Tue Feb 16 17:34   still logged in
-alee      ttyp7    csts.cs.oberlin. Tue Feb 16 17:34   still logged in
-jbrick    ttyp2    ocvaxa.cc.oberli Tue Feb 16 17:33 - 17:36  (00:03)
-mbastedo  ttypc    ocvaxa.cc.oberli Tue Feb 16 17:25 - 17:26  (00:01)
-rgoodste  ttypb    ocvaxa.cc.oberli Tue Feb 16 17:22 - 17:26  (00:03)
-huttar    ttyp9    lobby.ti.com     Tue Feb 16 17:19   still logged in
-klutz     ttyp3    132.162.32.25    Tue Feb 16 17:14   still logged in
-</PRE>
+     <br><dt><code>-</code><var>number</var><dt><code>-n </code><var>number</var><dt><code>--lines </code><var>number</var><dd>Limit the number of lines that <code>last</code> prints.
 
-<DL COMPACT>
+     <br><dt><code>-f </code><var>filename</var><dt><code>--file </code><var>filename</var><dd>Read from the file <var>filename</var> instead of the system's
+<code>wtmp</code> file.
 
-<DT><CODE>--no-truncate-ftp-entries</CODE>
-<DD>
-When printing out the information, don't chop the number part off of
-<CODE>ftp</CODE><VAR>xxxx</VAR> entries.
+     <br><dt><code>-y</code><dt><code>--print-year</code><dd>Print out the year when displaying dates.
 
-<DT><CODE>-<VAR>number</VAR></CODE>
-<DD>
-<DT><CODE>-n <VAR>number</VAR></CODE>
-<DD>
-<DT><CODE>--lines <VAR>number</VAR></CODE>
-<DD>
-Limit the number of lines that <CODE>last</CODE> prints.
+     <br><dt><code>-s</code><dt><code>--print-seconds</code><dd>Print out seconds when displaying dates and durations.
 
-<DT><CODE>-f <VAR>filename</VAR></CODE>
-<DD>
-<DT><CODE>--file <VAR>filename</VAR></CODE>
-<DD>
-Read from the file <VAR>filename</VAR> instead of the system's
-<CODE>wtmp</CODE> file.
-
-<DT><CODE>-y</CODE>
-<DD>
-<DT><CODE>--print-year</CODE>
-<DD>
-Print out the year when displaying dates.
-
-<DT><CODE>-s</CODE>
-<DD>
-<DT><CODE>--print-seconds</CODE>
-<DD>
-Print out seconds when displaying dates and durations.
-
-<DT><CODE>--complain</CODE>
-<DD>
-When the <CODE>wtmp</CODE> file has a problem (a time-warp, missing
+     <br><dt><code>--complain</code><dd>When the <code>wtmp</code> file has a problem (a time-warp, missing
 record, or whatever), print out an appropriate error.
 
-<DT><CODE>-x</CODE>
-<DD>
-<DT><CODE>--more-records</CODE>
-<DD>
-Print out run level changes, shutdowns, and time changes in addition to
+     <br><dt><code>-x</code><dt><code>--more-records</code><dd>Print out run level changes, shutdowns, and time changes in addition to
 the normal records.
 
-<DT><CODE>-a</CODE>
-<DD>
-<DT><CODE>--all-records</CODE>
-<DD>
-Print out all records in the <CODE>wtmp</CODE> file.
+     <br><dt><code>-a</code><dt><code>--all-records</code><dd>Print out all records in the <code>wtmp</code> file.
 
-<DT><CODE>-i</CODE>
-<DD>
-<DT><CODE>--ip-address</CODE>
-<DD>
-Some machines store the IP address of a connection in a utmp record.
-Enabling this option makes <CODE>last</CODE> print the IP address instead of
+     <br><dt><code>-i</code><dt><code>--ip-address</code><dd>Some machines store the IP address of a connection in a utmp record. 
+Enabling this option makes <code>last</code> print the IP address instead of
 the hostname.
 
-<DT><CODE>--tw-leniency <VAR>value</VAR></CODE>
-<DD>
-Set the time warp leniency value (in seconds).  See the <CODE>ac</CODE>
+     <br><dt><code>--tw-leniency </code><var>value</var><dd>Set the time warp leniency value (in seconds).  See the <code>ac</code>
 chapter for information.
 
-<DT><CODE>--tw-suspicious <VAR>value</VAR></CODE>
-<DD>
-Set the time warp suspicious value (in seconds).  See the <CODE>ac</CODE>
+     <br><dt><code>--tw-suspicious </code><var>value</var><dd>Set the time warp suspicious value (in seconds).  See the <code>ac</code>
 chapter for information.
 
-<DT><CODE>--debug</CODE>
-<DD>
-Print verbose internal information.
+     <br><dt><code>-w</code><dt><code>--wide</code><dd>By default, <code>last</code> tries to print each entry within in 80 columns. 
+Use this option to instruct <code>last</code> to print out the fields in the
+<code>wtmp</code> file with full field widths.
 
-<DT><CODE>-V</CODE>
-<DD>
-<DT><CODE>--version</CODE>
-<DD>
-Print <CODE>last</CODE>'s version number.
+     <br><dt><code>--debug</code><dd>Print verbose internal information.
 
-<DT><CODE>-h</CODE>
-<DD>
-<DT><CODE>--help</CODE>
-<DD>
-Print <CODE>last</CODE>'s usage string and default locations of system files
-to standard output.
-</DL>
+     <br><dt><code>-V</code><dt><code>--version</code><dd>Print <code>last</code>'s version number.
 
+     <br><dt><code>-h</code><dt><code>--help</code><dd>Print <code>last</code>'s usage string and default locations of system files
+to standard output. 
+</dl>
 
+<h3 class="section">3.2 Problems</h3>
 
-<H2><A NAME="SEC14" HREF="accounting_toc.html#TOC14">Problems</A></H2>
+<h5 class="unnumberedsubsubsec">The Clock Change Problem</h5>
 
-
-
-<H4><A NAME="SEC15" HREF="accounting_toc.html#TOC15">The Clock Change Problem</A></H4>
-
-<P>
-Of the <CODE>last</CODE>s I've tried, all of them have had problems parsing a
+<p>Of the <code>last</code>s I've tried, all of them have had problems parsing a
 system clock change.  Instead of modifying the entries that have been
 read, they just ignore the change and give you incorrect values.  GNU
-<CODE>last</CODE> knows about clock changes and prints the correct times.
+<code>last</code> knows about clock changes and prints the correct times.
 
-</P>
-<P>
-<STRONG>TANGIBLE RESULT:</STRONG> if you <CODE>diff</CODE> the output of your
-<CODE>last</CODE> and GNU <CODE>last</CODE>, entries after (before, rather) a clock
+<p class="noindent"><strong>TANGIBLE RESULT:</strong> if you <code>diff</code> the output of your
+<code>last</code> and GNU <code>last</code>, entries after (before, rather) a clock
 change will be off by the amount of the clock change.
 
-</P>
+<h5 class="unnumberedsubsubsec">The Ftp Problem</h5>
 
+<p>Most <code>last</code>s that I've examined have the same problem here as
+<code>ac</code> does&mdash;they log everyone out as soon as they see an ftp entry.
 
-<H4><A NAME="SEC16" HREF="accounting_toc.html#TOC16">The Ftp Problem</A></H4>
-
-<P>
-Most <CODE>last</CODE>s that I've examined have the same problem here as
-<CODE>ac</CODE> does--they log everyone out as soon as they see an ftp entry.
-
-</P>
-<P>
-<STRONG>TANGIBLE RESULT:</STRONG> GNU <CODE>last</CODE> will reflect the correct time
+<p class="noindent"><strong>TANGIBLE RESULT:</strong> GNU <code>last</code> will reflect the correct time
 spent in an ftp session, so the totals that it gives will most likely be
-greater than those given by the system <CODE>last</CODE>.
+greater than those given by the system <code>last</code>.
 
-</P>
-<P><HR><P>
-Go to the <A HREF="accounting_1.html">first</A>, <A HREF="accounting_3.html">previous</A>, <A HREF="accounting_5.html">next</A>, <A HREF="accounting_6.html">last</A> section, <A HREF="accounting_toc.html">table of contents</A>.
-</BODY>
-</HTML>
+<!--  -->
+</body></html>
+

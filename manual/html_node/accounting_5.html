@@ -1,148 +1,115 @@
-<HTML>
-<HEAD>
-<!-- This HTML file has been created by texi2html 1.52
-     from ../texi/accounting.texi on 7 November 1998 -->
+<html lang="en">
+<head>
+<title>lastcomm - Accounting Utilities Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Accounting Utilities Manual">
+<meta name="generator" content="makeinfo 4.8">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="last.html#last" title="last">
+<link rel="next" href="sa.html#sa" title="sa">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="lastcomm"></a>
+n&auml;chstes:&nbsp;<a rel="next" accesskey="n" href="sa.html#sa">sa</a>,
+voriges:&nbsp;<a rel="previous" accesskey="p" href="last.html#last">last</a>,
+aufw&auml;rts:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr>
+</div>
 
-<TITLE>Accounting Utilities Manual - lastcomm</TITLE>
-</HEAD>
-<BODY>
-Go to the <A HREF="accounting_1.html">first</A>, <A HREF="accounting_4.html">previous</A>, <A HREF="accounting_6.html">next</A>, <A HREF="accounting_6.html">last</A> section, <A HREF="accounting_toc.html">table of contents</A>.
-<P><HR><P>
+<h2 class="chapter">4 <code>lastcomm</code></h2>
 
-
-<H1><A NAME="SEC17" HREF="accounting_toc.html#TOC17"><CODE>lastcomm</CODE></A></H1>
-
-<P>
-<CODE>lastcomm</CODE> prints out information about previously executed
-commands.  If no arguments are specified, <CODE>lastcomm</CODE> will print
-info about all of the commands in the <CODE>acct</CODE> file (the
+<p><code>lastcomm</code> prints out information about previously executed
+commands.  If no arguments are specified, <code>lastcomm</code> will print
+info about all of the commands in the <code>acct</code> file (the
 record file).  If called with a command name, user name, or tty name,
 only records containing those items will be displayed.  For example, to
-find out which users used command <SAMP>`a.out'</SAMP> and which users were
-logged into <SAMP>`tty0'</SAMP>, type:
+find out which users used command `<samp><span class="samp">a.out</span></samp>' and which users were
+logged into `<samp><span class="samp">tty0</span></samp>', type:
 
-</P>
-<P>
-<CODE>lastcomm a.out tty0</CODE>
+   <p><code>lastcomm a.out tty0</code>
 
-</P>
-<P>
-This will print any entry for which <SAMP>`a.out'</SAMP> or <SAMP>`tty0'</SAMP> matches
+   <p>This will print any entry for which `<samp><span class="samp">a.out</span></samp>' or `<samp><span class="samp">tty0</span></samp>' matches
 in any of the record's fields (command, name, or tty).  If you want to
 find only items that match ALL of the arguments on the command line, you
-must use the '--strict-match' option.  For example, to list all of the
-executions of command <SAMP>`a.out'</SAMP> by user <SAMP>`root'</SAMP> on terminal
-<SAMP>`tty0'</SAMP>, type:
+must use the '&ndash;strict-match' option.  For example, to list all of the
+executions of command `<samp><span class="samp">a.out</span></samp>' by user `<samp><span class="samp">root</span></samp>' on terminal
+`<samp><span class="samp">tty0</span></samp>', type:
 
-</P>
-<P>
-<CODE>lastcomm --strict-match a.out root tty0</CODE>
+   <p><code>lastcomm --strict-match a.out root tty0</code>
 
-</P>
-<P>
-The order of the arguments is not important.
+   <p>The order of the arguments is not important.
 
-</P>
-<P>
-For each entry the following information is printed:
+   <p>For each entry the following information is printed:
 
-</P>
+     <ul>
+<li>command name of the process
+<li>flags, as recorded by the system accounting routines:
+          <ul>
+<li><strong>S</strong> command executed by super-user
+<li><strong>F</strong> command executed after a fork but without a following exec
+<li><strong>C</strong> command run in PDP-11 compatibility mode (VAX only)
+<li><strong>D</strong> command terminated with the generation of a core file
+<li><strong>X</strong> command was terminated with the signal SIGTERM
+</ul>
+     <li>the name of the user who ran the process
+<li>time the process exited
+</ul>
 
-<UL>
-<LI>
+<h3 class="section">4.1 Flags</h3>
 
-command name of the process
-<LI>
-
-flags, as recorded by the system accounting routines:
-
-<UL>
-<LI>
-
-<STRONG>S</STRONG> command executed by super-user
-<LI>
-
-<STRONG>F</STRONG> command executed after a fork but without a following exec
-<LI>
-
-<STRONG>C</STRONG> command run in PDP-11 compatibility mode (VAX only)
-<LI>
-
-<STRONG>D</STRONG> command terminated with the generation of a core file
-<LI>
-
-<STRONG>X</STRONG> command was terminated with the signal SIGTERM
-</UL>
-
-<LI>
-
-the name of the user who ran the process
-<LI>
-
-time the process exited
-</UL>
-
-
-
-<H2><A NAME="SEC18" HREF="accounting_toc.html#TOC18">Flags</A></H2>
-
-<P>
-This program implements the features of regular u*x <CODE>lastcomm</CODE> with
-a few extra flags.  When <CODE>lastcomm</CODE> is invoked without arguments,
+<p>This program implements the features of regular u*x <code>lastcomm</code> with
+a few extra flags.  When <code>lastcomm</code> is invoked without arguments,
 the output looks like this:
-
-<PRE>
-nslookup         jberman  ttypb      0.03 secs Tue Feb 16 19:23
-comsat           root     __         0.03 secs Tue Feb 16 19:19
-uptime           ctilburg __         0.11 secs Tue Feb 16 19:23
-sh          F    ctilburg __         0.02 secs Tue Feb 16 19:23
-sleep            ctilburg __         0.02 secs Tue Feb 16 19:22
-ls               noel     ttyp4      0.19 secs Tue Feb 16 19:23
-</PRE>
-
-<DL COMPACT>
-
-<DT><CODE>--strict-match</CODE>
-<DD>
-Print only entries that match <EM>all</EM> of the arguments on the command
+<pre class="example">     nslookup         jberman  ttypb      0.03 secs Tue Feb 16 19:23
+     comsat           root     __         0.03 secs Tue Feb 16 19:19
+     uptime           ctilburg __         0.11 secs Tue Feb 16 19:23
+     sh          F    ctilburg __         0.02 secs Tue Feb 16 19:23
+     sleep            ctilburg __         0.02 secs Tue Feb 16 19:22
+     ls               noel     ttyp4      0.19 secs Tue Feb 16 19:23
+</pre>
+     <dl>
+<dt><code>--strict-match</code><dd>Print only entries that match <em>all</em> of the arguments on the command
 line.
 
-<DT><CODE>--user <VAR>name</VAR></CODE>
-<DD>
-List records for user with <VAR>name</VAR>.  This is useful if you're trying
+     <br><dt><code>--user </code><var>name</var><dd>List records for user with <var>name</var>.  This is useful if you're trying
 to match a username that happens to be the same as a command (e.g.,
-<CODE>ed</CODE>).
+<code>ed</code>).
 
-<DT><CODE>--command <VAR>name</VAR></CODE>
-<DD>
-List records for command <VAR>name</VAR>.
+     <br><dt><code>--command </code><var>name</var><dd>List records for command <var>name</var>.
 
-<DT><CODE>--tty <VAR>name</VAR></CODE>
-<DD>
-List records for tty <VAR>name</VAR>.
+     <br><dt><code>--tty </code><var>name</var><dd>List records for tty <var>name</var>.
 
-<DT><CODE>-f <VAR>filename</VAR></CODE>
-<DD>
-<DT><CODE>--file <VAR>filename</VAR></CODE>
-<DD>
-Read from the file <VAR>filename</VAR> instead of the system's
-<CODE>acct</CODE> file.
+     <br><dt><code>-f </code><var>filename</var><dt><code>--file </code><var>filename</var><dd>Read from the file <var>filename</var> instead of the system's
+<code>acct</code> file.
 
-<DT><CODE>--debug</CODE>
-<DD>
-Print verbose internal information.
+     <br><dt><code>--ahz </code><var>hz</var><dd>Use this flag to tell the program what <code>AHZ</code> should be (in hertz). 
+This option is useful if you are trying to view an <code>acct</code> file
+created on another machine which has the same byte order and file format
+as your current machine, but has a different value for <code>AHZ</code>.
 
-<DT><CODE>--version</CODE>
-<DD>
-Print <CODE>lastcomm</CODE>'s version number.
+     <br><dt><code>--debug</code><dd>Print verbose internal information.
 
-<DT><CODE>--help</CODE>
-<DD>
-Print <CODE>lastcomm</CODE>'s usage string and default locations of system
-files to standard output.
-</DL>
+     <br><dt><code>--version</code><dd>Print <code>lastcomm</code>'s version number.
 
-<P><HR><P>
-Go to the <A HREF="accounting_1.html">first</A>, <A HREF="accounting_4.html">previous</A>, <A HREF="accounting_6.html">next</A>, <A HREF="accounting_6.html">last</A> section, <A HREF="accounting_toc.html">table of contents</A>.
-</BODY>
-</HTML>
+     <br><dt><code>--help</code><dd>Print <code>lastcomm</code>'s usage string and default locations of system
+files to standard output. 
+</dl>
+
+<!--  -->
+</body></html>
+
