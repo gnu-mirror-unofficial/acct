@@ -1,15 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
 <html lang="en">
 <head>
-<title>lastcomm - Accounting Utilities Manual</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Accounting Utilities Manual">
-<meta name="generator" content="makeinfo 4.8">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="prev" href="last.html#last" title="last">
-<link rel="next" href="sa.html#sa" title="sa">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
+  <meta name="generator" content=
+  "HTML Tidy for Linux/x86 (vers 25 March 2009), see www.w3.org">
+
+  <title>lastcomm - Accounting Utilities Manual</title>
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Accounting Utilities Manual">
+  <meta name="generator" content="makeinfo 4.8">
+  <link title="Top" rel="start" href="index.html#Top">
+  <link rel="prev" href="last.html#last" title="last">
+  <link rel="next" href="sa.html#sa" title="sa">
+  <link href="http://www.gnu.org/software/texinfo/" rel=
+  "generator-home" title="Texinfo Homepage">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <style type="text/css">
+<!--
   pre.display { font-family:inherit }
   pre.format  { font-family:inherit }
   pre.smalldisplay { font-family:inherit; font-size:smaller }
@@ -19,97 +26,141 @@
   span.sc    { font-variant:small-caps }
   span.roman { font-family:serif; font-weight:normal; } 
   span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+  -->
+  </style>
 </head>
+
 <body>
-<div class="node">
-<p>
-<a name="lastcomm"></a>
-n&auml;chstes:&nbsp;<a rel="next" accesskey="n" href="sa.html#sa">sa</a>,
-voriges:&nbsp;<a rel="previous" accesskey="p" href="last.html#last">last</a>,
-aufw&auml;rts:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
-<hr>
-</div>
+  <div class="node">
+    <p><a name="lastcomm" id="lastcomm"></a>
+    n&auml;chstes:&nbsp;<a rel="next" accesskey="n" href=
+    "sa.html#sa">sa</a>, voriges:&nbsp;<a rel="previous" accesskey=
+    "p" href="last.html#last">last</a>, aufw&auml;rts:&nbsp;<a rel=
+    "up" accesskey="u" href="index.html#Top">Top</a></p>
+    <hr>
+  </div>
 
-<h2 class="chapter">4 <code>lastcomm</code></h2>
+  <h2 class="chapter">4 <code>lastcomm</code></h2>
 
-<p><code>lastcomm</code> prints out information about previously executed
-commands.  If no arguments are specified, <code>lastcomm</code> will print
-info about all of the commands in the <code>acct</code> file (the
-record file).  If called with a command name, user name, or tty name,
-only records containing those items will be displayed.  For example, to
-find out which users used command `<samp><span class="samp">a.out</span></samp>' and which users were
-logged into `<samp><span class="samp">tty0</span></samp>', type:
+  <p><code>lastcomm</code> prints out information about previously
+  executed commands. If no arguments are specified,
+  <code>lastcomm</code> will print info about all of the commands
+  in the <code>acct</code> file (the record file). If called with a
+  command name, user name, or tty name, only records containing
+  those items will be displayed. For example, to find out which
+  users used command `<samp><span class="samp">a.out</span></samp>'
+  and which users were logged into `<samp><span class=
+  "samp">tty0</span></samp>', type:</p>
 
-   <p><code>lastcomm a.out tty0</code>
+  <p><code>lastcomm a.out tty0</code></p>
 
-   <p>This will print any entry for which `<samp><span class="samp">a.out</span></samp>' or `<samp><span class="samp">tty0</span></samp>' matches
-in any of the record's fields (command, name, or tty).  If you want to
-find only items that match ALL of the arguments on the command line, you
-must use the '&ndash;strict-match' option.  For example, to list all of the
-executions of command `<samp><span class="samp">a.out</span></samp>' by user `<samp><span class="samp">root</span></samp>' on terminal
-`<samp><span class="samp">tty0</span></samp>', type:
+  <p>This will print any entry for which `<samp><span class=
+  "samp">a.out</span></samp>' or `<samp><span class=
+  "samp">tty0</span></samp>' matches in any of the record's fields
+  (command, name, or tty). If you want to find only items that
+  match ALL of the arguments on the command line, you must use the
+  '&ndash;strict-match' option. For example, to list all of the
+  executions of command `<samp><span class=
+  "samp">a.out</span></samp>' by user `<samp><span class=
+  "samp">root</span></samp>' on terminal `<samp><span class=
+  "samp">tty0</span></samp>', type:</p>
 
-   <p><code>lastcomm --strict-match a.out root tty0</code>
+  <p><code>lastcomm --strict-match a.out root tty0</code></p>
 
-   <p>The order of the arguments is not important.
+  <p>The order of the arguments is not important.</p>
 
-   <p>For each entry the following information is printed:
+  <p>For each entry the following information is printed:</p>
 
-     <ul>
-<li>command name of the process
-<li>flags, as recorded by the system accounting routines:
-          <ul>
-<li><strong>S</strong> command executed by super-user
-<li><strong>F</strong> command executed after a fork but without a following exec
-<li><strong>C</strong> command run in PDP-11 compatibility mode (VAX only)
-<li><strong>D</strong> command terminated with the generation of a core file
-<li><strong>X</strong> command was terminated with the signal SIGTERM
-</ul>
-     <li>the name of the user who ran the process
-<li>time the process exited
-</ul>
+  <ul>
+    <li>command name of the process</li>
 
-<h3 class="section">4.1 Flags</h3>
+    <li>flags, as recorded by the system accounting routines:
 
-<p>This program implements the features of regular u*x <code>lastcomm</code> with
-a few extra flags.  When <code>lastcomm</code> is invoked without arguments,
-the output looks like this:
-<pre class="example">     nslookup         jberman  ttypb      0.03 secs Tue Feb 16 19:23
+      <ul>
+        <li><strong>S</strong> command executed by super-user</li>
+
+        <li><strong>F</strong> command executed after a fork but
+        without a following exec</li>
+
+        <li><strong>C</strong> command run in PDP-11 compatibility
+        mode (VAX only)</li>
+
+        <li><strong>D</strong> command terminated with the
+        generation of a core file</li>
+
+        <li><strong>X</strong> command was terminated with the
+        signal SIGTERM</li>
+      </ul>
+    </li>
+
+    <li>the name of the user who ran the process</li>
+
+    <li>time the process exited</li>
+  </ul>
+
+  <h3 class="section">4.1 Flags</h3>
+
+  <p>This program implements the features of regular u*x
+  <code>lastcomm</code> with a few extra flags. When
+  <code>lastcomm</code> is invoked without arguments, the output
+  looks like this:</p>
+  <pre class="example">
+     nslookup         jberman  ttypb      0.03 secs Tue Feb 16 19:23
      comsat           root     __         0.03 secs Tue Feb 16 19:19
      uptime           ctilburg __         0.11 secs Tue Feb 16 19:23
      sh          F    ctilburg __         0.02 secs Tue Feb 16 19:23
      sleep            ctilburg __         0.02 secs Tue Feb 16 19:22
      ls               noel     ttyp4      0.19 secs Tue Feb 16 19:23
 </pre>
-     <dl>
-<dt><code>--strict-match</code><dd>Print only entries that match <em>all</em> of the arguments on the command
-line.
 
-     <br><dt><code>--user </code><var>name</var><dd>List records for user with <var>name</var>.  This is useful if you're trying
-to match a username that happens to be the same as a command (e.g.,
-<code>ed</code>).
+  <dl>
+    <dt><code>--strict-match</code></dt>
 
-     <br><dt><code>--command </code><var>name</var><dd>List records for command <var>name</var>.
+    <dd>Print only entries that match <em>all</em> of the arguments
+    on the command line.<br></dd>
 
-     <br><dt><code>--tty </code><var>name</var><dd>List records for tty <var>name</var>.
+    <dt><code>--user</code> <var>name</var></dt>
 
-     <br><dt><code>-f </code><var>filename</var><dt><code>--file </code><var>filename</var><dd>Read from the file <var>filename</var> instead of the system's
-<code>acct</code> file.
+    <dd>List records for user with <var>name</var>. This is useful
+    if you're trying to match a username that happens to be the
+    same as a command (e.g., <code>ed</code>).<br></dd>
 
-     <br><dt><code>--ahz </code><var>hz</var><dd>Use this flag to tell the program what <code>AHZ</code> should be (in hertz). 
-This option is useful if you are trying to view an <code>acct</code> file
-created on another machine which has the same byte order and file format
-as your current machine, but has a different value for <code>AHZ</code>.
+    <dt><code>--command</code> <var>name</var></dt>
 
-     <br><dt><code>--debug</code><dd>Print verbose internal information.
+    <dd>List records for command <var>name</var>.<br></dd>
 
-     <br><dt><code>--version</code><dd>Print <code>lastcomm</code>'s version number.
+    <dt><code>--tty</code> <var>name</var></dt>
 
-     <br><dt><code>--help</code><dd>Print <code>lastcomm</code>'s usage string and default locations of system
-files to standard output. 
-</dl>
+    <dd>List records for tty <var>name</var>.<br></dd>
 
-<!--  -->
-</body></html>
+    <dt><code>-f</code> <var>filename</var></dt>
 
+    <dt><code>--file</code> <var>filename</var></dt>
+
+    <dd>Read from the file <var>filename</var> instead of the
+    system's <code>acct</code> file.<br></dd>
+
+    <dt><code>--ahz</code> <var>hz</var></dt>
+
+    <dd>Use this flag to tell the program what <code>AHZ</code>
+    should be (in hertz). This option is useful if you are trying
+    to view an <code>acct</code> file created on another machine
+    which has the same byte order and file format as your current
+    machine, but has a different value for
+    <code>AHZ</code>.<br></dd>
+
+    <dt><code>--debug</code></dt>
+
+    <dd>Print verbose internal information.<br></dd>
+
+    <dt><code>--version</code></dt>
+
+    <dd>Print <code>lastcomm</code>'s version number.<br></dd>
+
+    <dt><code>--help</code></dt>
+
+    <dd>Print <code>lastcomm</code>'s usage string and default
+    locations of system files to standard output.</dd>
+  </dl><!--  -->
+</body>
+</html>

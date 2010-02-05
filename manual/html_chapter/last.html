@@ -1,15 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
 <html lang="en">
 <head>
-<title>last - Accounting Utilities Manual</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Accounting Utilities Manual">
-<meta name="generator" content="makeinfo 4.8">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="prev" href="accton.html#accton" title="accton">
-<link rel="next" href="lastcomm.html#lastcomm" title="lastcomm">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
+  <meta name="generator" content=
+  "HTML Tidy for Linux/x86 (vers 25 March 2009), see www.w3.org">
+
+  <title>last - Accounting Utilities Manual</title>
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Accounting Utilities Manual">
+  <meta name="generator" content="makeinfo 4.8">
+  <link title="Top" rel="start" href="index.html#Top">
+  <link rel="prev" href="accton.html#accton" title="accton">
+  <link rel="next" href="lastcomm.html#lastcomm" title="lastcomm">
+  <link href="http://www.gnu.org/software/texinfo/" rel=
+  "generator-home" title="Texinfo Homepage">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <style type="text/css">
+<!--
   pre.display { font-family:inherit }
   pre.format  { font-family:inherit }
   pre.smalldisplay { font-family:inherit; font-size:smaller }
@@ -19,48 +26,58 @@
   span.sc    { font-variant:small-caps }
   span.roman { font-family:serif; font-weight:normal; } 
   span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+  -->
+  </style>
 </head>
+
 <body>
-<div class="node">
-<p>
-<a name="last"></a>
-n&auml;chstes:&nbsp;<a rel="next" accesskey="n" href="lastcomm.html#lastcomm">lastcomm</a>,
-voriges:&nbsp;<a rel="previous" accesskey="p" href="accton.html#accton">accton</a>,
-aufw&auml;rts:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
-<hr>
-</div>
+  <div class="node">
+    <p><a name="last" id="last"></a> n&auml;chstes:&nbsp;<a rel=
+    "next" accesskey="n" href=
+    "lastcomm.html#lastcomm">lastcomm</a>, voriges:&nbsp;<a rel=
+    "previous" accesskey="p" href="accton.html#accton">accton</a>,
+    aufw&auml;rts:&nbsp;<a rel="up" accesskey="u" href=
+    "index.html#Top">Top</a></p>
+    <hr>
+  </div>
 
-<h2 class="chapter">3 <code>last</code></h2>
+  <h2 class="chapter">3 <code>last</code></h2>
 
-<p><code>last</code> looks through the <code>wtmp</code> file (which records
-all logins/logouts) and prints information about connect times of users. 
-Records are printed from most recent to least recent.  Records can be
-specified by tty and username.  tty names can be abbreviated: `<samp><span class="samp">last
-0</span></samp>' is equivalent to `<samp><span class="samp">last tty0</span></samp>'.
+  <p><code>last</code> looks through the <code>wtmp</code> file
+  (which records all logins/logouts) and prints information about
+  connect times of users. Records are printed from most recent to
+  least recent. Records can be specified by tty and username. tty
+  names can be abbreviated: `<samp><span class="samp">last
+  0</span></samp>' is equivalent to `<samp><span class="samp">last
+  tty0</span></samp>'.</p>
 
-   <p>Multiple arguments can be specified: `<samp><span class="samp">last root console</span></samp>' will print
-all of the entries for the user <code>root</code> and all entries logged in on
-the <code>console</code> tty.
+  <p>Multiple arguments can be specified: `<samp><span class=
+  "samp">last root console</span></samp>' will print all of the
+  entries for the user <code>root</code> and all entries logged in
+  on the <code>console</code> tty.</p>
 
-   <p>The special users <code>reboot</code> and <code>shutdown</code> log in when the
-system reboots or (surprise) shuts down.  `<samp><span class="samp">last reboot</span></samp>' will
-produce a record of reboot times.
+  <p>The special users <code>reboot</code> and
+  <code>shutdown</code> log in when the system reboots or
+  (surprise) shuts down. `<samp><span class="samp">last
+  reboot</span></samp>' will produce a record of reboot times.</p>
 
-   <p>If <code>last</code> is interrupted by a quit signal, it prints out how far
-its search in the <code>wtmp</code> file had reached and then
-quits:
-<pre class="example">     weerapan  ttyq6    132.162.32.37    Mon Feb 15 19:07 - 19:21  (00:13)
+  <p>If <code>last</code> is interrupted by a quit signal, it
+  prints out how far its search in the <code>wtmp</code> file had
+  reached and then quits:</p>
+  <pre class="example">
+     weerapan  ttyq6    132.162.32.37    Mon Feb 15 19:07 - 19:21  (00:13)
      weerapan  ttyq6    132.162.32.37    Mon Feb 15 19:07 - 19:21  (00:13)
      
      interrupted at Mon Feb 15 19:07:52 1993
 </pre>
-   <h3 class="section">3.1 Flags</h3>
 
-<p>This program implements the features of regular u*x <code>last</code> with a few
-extra flags.  When <code>last</code> is invoked with no arguments, the output
-looks like this:
-<pre class="example">     gr151     ttyp2    ray.cs.oberlin.e Tue Feb 16 17:40   still logged in
+  <h3 class="section">3.1 Flags</h3>
+
+  <p>This program implements the features of regular u*x
+  <code>last</code> with a few extra flags. When <code>last</code>
+  is invoked with no arguments, the output looks like this:</p>
+  <pre class="example">
+     gr151     ttyp2    ray.cs.oberlin.e Tue Feb 16 17:40   still logged in
      jhoggard  ttyp2    csts.cs.oberlin. Tue Feb 16 17:39 - 17:39  (00:00)
      jstarr    ttyp1    UNIX5.ANDREW.CMU Tue Feb 16 17:38   still logged in
      jberman   ttypb    132.162.32.25    Tue Feb 16 17:34   still logged in
@@ -71,71 +88,131 @@ looks like this:
      huttar    ttyp9    lobby.ti.com     Tue Feb 16 17:19   still logged in
      klutz     ttyp3    132.162.32.25    Tue Feb 16 17:14   still logged in
 </pre>
-     <dl>
-<dt><code>--no-truncate-ftp-entries</code><dd>When printing out the information, don't chop the number part off of
-<code>ftp</code><var>xxxx</var> entries.
 
-     <br><dt><code>-</code><var>number</var><dt><code>-n </code><var>number</var><dt><code>--lines </code><var>number</var><dd>Limit the number of lines that <code>last</code> prints.
+  <dl>
+    <dt><code>--no-truncate-ftp-entries</code></dt>
 
-     <br><dt><code>-f </code><var>filename</var><dt><code>--file </code><var>filename</var><dd>Read from the file <var>filename</var> instead of the system's
-<code>wtmp</code> file.
+    <dd>When printing out the information, don't chop the number
+    part off of <code>ftp</code><var>xxxx</var> entries.<br></dd>
 
-     <br><dt><code>-y</code><dt><code>--print-year</code><dd>Print out the year when displaying dates.
+    <dt><code>-</code><var>number</var></dt>
 
-     <br><dt><code>-s</code><dt><code>--print-seconds</code><dd>Print out seconds when displaying dates and durations.
+    <dt><code>-n</code> <var>number</var></dt>
 
-     <br><dt><code>--complain</code><dd>When the <code>wtmp</code> file has a problem (a time-warp, missing
-record, or whatever), print out an appropriate error.
+    <dt><code>--lines</code> <var>number</var></dt>
 
-     <br><dt><code>-x</code><dt><code>--more-records</code><dd>Print out run level changes, shutdowns, and time changes in addition to
-the normal records.
+    <dd>Limit the number of lines that <code>last</code>
+    prints.<br></dd>
 
-     <br><dt><code>-a</code><dt><code>--all-records</code><dd>Print out all records in the <code>wtmp</code> file.
+    <dt><code>-f</code> <var>filename</var></dt>
 
-     <br><dt><code>-i</code><dt><code>--ip-address</code><dd>Some machines store the IP address of a connection in a utmp record. 
-Enabling this option makes <code>last</code> print the IP address instead of
-the hostname.
+    <dt><code>--file</code> <var>filename</var></dt>
 
-     <br><dt><code>--tw-leniency </code><var>value</var><dd>Set the time warp leniency value (in seconds).  See the <code>ac</code>
-chapter for information.
+    <dd>Read from the file <var>filename</var> instead of the
+    system's <code>wtmp</code> file.<br></dd>
 
-     <br><dt><code>--tw-suspicious </code><var>value</var><dd>Set the time warp suspicious value (in seconds).  See the <code>ac</code>
-chapter for information.
+    <dt><code>-y</code></dt>
 
-     <br><dt><code>-w</code><dt><code>--wide</code><dd>By default, <code>last</code> tries to print each entry within in 80 columns. 
-Use this option to instruct <code>last</code> to print out the fields in the
-<code>wtmp</code> file with full field widths.
+    <dt><code>--print-year</code></dt>
 
-     <br><dt><code>--debug</code><dd>Print verbose internal information.
+    <dd>Print out the year when displaying dates.<br></dd>
 
-     <br><dt><code>-V</code><dt><code>--version</code><dd>Print <code>last</code>'s version number.
+    <dt><code>-s</code></dt>
 
-     <br><dt><code>-h</code><dt><code>--help</code><dd>Print <code>last</code>'s usage string and default locations of system files
-to standard output. 
-</dl>
+    <dt><code>--print-seconds</code></dt>
 
-<h3 class="section">3.2 Problems</h3>
+    <dd>Print out seconds when displaying dates and
+    durations.<br></dd>
 
-<h5 class="unnumberedsubsubsec">The Clock Change Problem</h5>
+    <dt><code>--complain</code></dt>
 
-<p>Of the <code>last</code>s I've tried, all of them have had problems parsing a
-system clock change.  Instead of modifying the entries that have been
-read, they just ignore the change and give you incorrect values.  GNU
-<code>last</code> knows about clock changes and prints the correct times.
+    <dd>When the <code>wtmp</code> file has a problem (a time-warp,
+    missing record, or whatever), print out an appropriate
+    error.<br></dd>
 
-<p class="noindent"><strong>TANGIBLE RESULT:</strong> if you <code>diff</code> the output of your
-<code>last</code> and GNU <code>last</code>, entries after (before, rather) a clock
-change will be off by the amount of the clock change.
+    <dt><code>-x</code></dt>
 
-<h5 class="unnumberedsubsubsec">The Ftp Problem</h5>
+    <dt><code>--more-records</code></dt>
 
-<p>Most <code>last</code>s that I've examined have the same problem here as
-<code>ac</code> does&mdash;they log everyone out as soon as they see an ftp entry.
+    <dd>Print out run level changes, shutdowns, and time changes in
+    addition to the normal records.<br></dd>
 
-<p class="noindent"><strong>TANGIBLE RESULT:</strong> GNU <code>last</code> will reflect the correct time
-spent in an ftp session, so the totals that it gives will most likely be
-greater than those given by the system <code>last</code>.
+    <dt><code>-a</code></dt>
 
-<!--  -->
-</body></html>
+    <dt><code>--all-records</code></dt>
 
+    <dd>Print out all records in the <code>wtmp</code>
+    file.<br></dd>
+
+    <dt><code>-i</code></dt>
+
+    <dt><code>--ip-address</code></dt>
+
+    <dd>Some machines store the IP address of a connection in a
+    utmp record. Enabling this option makes <code>last</code> print
+    the IP address instead of the hostname.<br></dd>
+
+    <dt><code>--tw-leniency</code> <var>value</var></dt>
+
+    <dd>Set the time warp leniency value (in seconds). See the
+    <code>ac</code> chapter for information.<br></dd>
+
+    <dt><code>--tw-suspicious</code> <var>value</var></dt>
+
+    <dd>Set the time warp suspicious value (in seconds). See the
+    <code>ac</code> chapter for information.<br></dd>
+
+    <dt><code>-w</code></dt>
+
+    <dt><code>--wide</code></dt>
+
+    <dd>By default, <code>last</code> tries to print each entry
+    within in 80 columns. Use this option to instruct
+    <code>last</code> to print out the fields in the
+    <code>wtmp</code> file with full field widths.<br></dd>
+
+    <dt><code>--debug</code></dt>
+
+    <dd>Print verbose internal information.<br></dd>
+
+    <dt><code>-V</code></dt>
+
+    <dt><code>--version</code></dt>
+
+    <dd>Print <code>last</code>'s version number.<br></dd>
+
+    <dt><code>-h</code></dt>
+
+    <dt><code>--help</code></dt>
+
+    <dd>Print <code>last</code>'s usage string and default
+    locations of system files to standard output.</dd>
+  </dl>
+
+  <h3 class="section">3.2 Problems</h3>
+
+  <h5 class="unnumberedsubsubsec">The Clock Change Problem</h5>
+
+  <p>Of the <code>last</code>s I've tried, all of them have had
+  problems parsing a system clock change. Instead of modifying the
+  entries that have been read, they just ignore the change and give
+  you incorrect values. GNU <code>last</code> knows about clock
+  changes and prints the correct times.</p>
+
+  <p class="noindent"><strong>TANGIBLE RESULT:</strong> if you
+  <code>diff</code> the output of your <code>last</code> and GNU
+  <code>last</code>, entries after (before, rather) a clock change
+  will be off by the amount of the clock change.</p>
+
+  <h5 class="unnumberedsubsubsec">The Ftp Problem</h5>
+
+  <p>Most <code>last</code>s that I've examined have the same
+  problem here as <code>ac</code> does&mdash;they log everyone out
+  as soon as they see an ftp entry.</p>
+
+  <p class="noindent"><strong>TANGIBLE RESULT:</strong> GNU
+  <code>last</code> will reflect the correct time spent in an ftp
+  session, so the totals that it gives will most likely be greater
+  than those given by the system <code>last</code>. <!--  --></p>
+</body>
+</html>

@@ -1,15 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
 <html lang="en">
 <head>
-<title>Preface - Accounting Utilities Manual</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Accounting Utilities Manual">
-<meta name="generator" content="makeinfo 4.8">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="prev" href="index.html#Top" title="Top">
-<link rel="next" href="ac.html#ac" title="ac">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
+  <meta name="generator" content=
+  "HTML Tidy for Linux/x86 (vers 25 March 2009), see www.w3.org">
+
+  <title>Preface - Accounting Utilities Manual</title>
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Accounting Utilities Manual">
+  <meta name="generator" content="makeinfo 4.8">
+  <link title="Top" rel="start" href="index.html#Top">
+  <link rel="prev" href="index.html#Top" title="Top">
+  <link rel="next" href="ac.html#ac" title="ac">
+  <link href="http://www.gnu.org/software/texinfo/" rel=
+  "generator-home" title="Texinfo Homepage">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <style type="text/css">
+<!--
   pre.display { font-family:inherit }
   pre.format  { font-family:inherit }
   pre.smalldisplay { font-family:inherit; font-size:smaller }
@@ -19,163 +26,254 @@
   span.sc    { font-variant:small-caps }
   span.roman { font-family:serif; font-weight:normal; } 
   span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+  -->
+  </style>
 </head>
+
 <body>
-<div class="node">
-<p>
-<a name="Preface"></a>
-n&auml;chstes:&nbsp;<a rel="next" accesskey="n" href="ac.html#ac">ac</a>,
-voriges:&nbsp;<a rel="previous" accesskey="p" href="index.html#Top">Top</a>,
-aufw&auml;rts:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
-<hr>
-</div>
+  <div class="node">
+    <p><a name="Preface" id="Preface"></a>
+    n&auml;chstes:&nbsp;<a rel="next" accesskey="n" href=
+    "ac.html#ac">ac</a>, voriges:&nbsp;<a rel="previous" accesskey=
+    "p" href="index.html#Top">Top</a>, aufw&auml;rts:&nbsp;<a rel=
+    "up" accesskey="u" href="index.html#Top">Top</a></p>
+    <hr>
+  </div>
 
-<h2 class="unnumbered">Preface</h2>
+  <h2 class="unnumbered">Preface</h2>
 
-<p>Way back a long time ago, Thompson and Ritchie were sitting opposite one
-another at the commissary, sipping coffees and discussing their evolving
-behemoth.
+  <p>Way back a long time ago, Thompson and Ritchie were sitting
+  opposite one another at the commissary, sipping coffees and
+  discussing their evolving behemoth.</p>
 
-   <p>&ldquo;This behemoth of ours,&rdquo; said Ken, &ldquo;is becoming rather popular,
-wouldn't you say?&rdquo;  &ldquo;Yes,&rdquo; said Dennis.  &ldquo;Every time I want to do a
-compilation, I have to wait for hours and hours.  It's infuriating.&rdquo;
-They both agreed that the load on their system was too great.  Both
-sighed, picked up their mugs, and went back to the workbench.  Little
-did they know that an upper-management type was sitting just within
-earshot of their conversation.
+  <p>&ldquo;This behemoth of ours,&rdquo; said Ken, &ldquo;is
+  becoming rather popular, wouldn't you say?&rdquo;
+  &ldquo;Yes,&rdquo; said Dennis. &ldquo;Every time I want to do a
+  compilation, I have to wait for hours and hours. It's
+  infuriating.&rdquo; They both agreed that the load on their
+  system was too great. Both sighed, picked up their mugs, and went
+  back to the workbench. Little did they know that an
+  upper-management type was sitting just within earshot of their
+  conversation.</p>
 
-   <p>&ldquo;We are AT&amp;T Bell Laboratories, aren't we?&rdquo; the upper-management type
-thought to himself.  &ldquo;Well, what is our organization best known for?&rdquo;
-The brill-cream in his hair glistened.  &ldquo;Screwing people out of lots of
-money, of course!  If there were some way that we could keep tabs on
-users and charge them through the nose for their CPU time...&rdquo;
+  <p>&ldquo;We are AT&amp;T Bell Laboratories, aren't we?&rdquo;
+  the upper-management type thought to himself. &ldquo;Well, what
+  is our organization best known for?&rdquo; The brill-cream in his
+  hair glistened. &ldquo;Screwing people out of lots of money, of
+  course! If there were some way that we could keep tabs on users
+  and charge them through the nose for their CPU time...&rdquo;</p>
 
-   <p>The accounting utilities were born.
+  <p>The accounting utilities were born.</p>
 
-   <p>Seriously though, the accouting utilities can provide a system
-administrator with useful information about system usage&mdash;connections,
-programs executed, and utilization of system resources.
+  <p>Seriously though, the accouting utilities can provide a system
+  administrator with useful information about system
+  usage&mdash;connections, programs executed, and utilization of
+  system resources.</p>
 
-   <p>Information about users&mdash;their connect time, location, programs
-executed, and the like&mdash;is automatically recored in files by
-<code>init</code> and <code>login</code>.  Four of them are of interest to us:
-<code>wtmp</code>, which has records for each login and logout;
-<code>acct</code>, which records each command that was run;
-<code>usracct</code> and <code>savacct</code>, which contain
-summaries of the information in <code>acct</code> by user and
-command, respectively.  Each of the accounting utilities reports or
-summarizes information stored in these files.
+  <p>Information about users&mdash;their connect time, location,
+  programs executed, and the like&mdash;is automatically recored in
+  files by <code>init</code> and <code>login</code>. Four of them
+  are of interest to us: <code>wtmp</code>, which has records for
+  each login and logout; <code>acct</code>, which records each
+  command that was run; <code>usracct</code> and
+  <code>savacct</code>, which contain summaries of the information
+  in <code>acct</code> by user and command, respectively. Each of
+  the accounting utilities reports or summarizes information stored
+  in these files.</p>
 
-     <dl>
-<dt><code>ac</code><dd>prints statistics about users' connect time.  <code>ac</code> can tell you how
-long a particular user or group of users were connected to your system,
-printing totals by day or for all of the entries in the
-<code>wtmp</code> file.
+  <dl>
+    <dt><code>ac</code></dt>
 
-     <br><dt><code>accton</code><dd>turns accounting on or off.
+    <dd>prints statistics about users' connect time.
+    <code>ac</code> can tell you how long a particular user or
+    group of users were connected to your system, printing totals
+    by day or for all of the entries in the <code>wtmp</code>
+    file.<br></dd>
 
-     <br><dt><code>last</code><dd>lists the logins on the system, most recent first.  With <code>last</code>,
-you can search the <code>wtmp</code> file for a particular user or
-terminal name (to which the user was connected).  Of special interest
-are two fake users, `<samp><span class="samp">reboot</span></samp>' and `<samp><span class="samp">shutdown</span></samp>', which are
-recorded when the system is shut down or reboots.
+    <dt><code>accton</code></dt>
 
-     <br><dt><code>lastcomm</code><dd>lists the commands executed on the system, most recent first, showing
-the run state of each command.  With <code>last</code>, you can search the
-<code>acct</code> file for a particular user, terminal, or command.
+    <dd>turns accounting on or off.<br></dd>
 
-     <br><dt><code>sa</code><dd>summarizes the information in the <code>acct</code> file into the
-<code>savacct</code> and <code>usracct</code> file.  It also
-generates reports about commands, giving the number of invocations, cpu
-time used, average core usage, etc.
+    <dt><code>last</code></dt>
 
-     <br><dt><code>dump-acct</code><dt><code>dump-utmp</code><dd>display <code>acct</code> and <code>utmp</code> files in a human-readable format.
+    <dd>lists the logins on the system, most recent first. With
+    <code>last</code>, you can search the <code>wtmp</code> file
+    for a particular user or terminal name (to which the user was
+    connected). Of special interest are two fake users,
+    `<samp><span class="samp">reboot</span></samp>' and
+    `<samp><span class="samp">shutdown</span></samp>', which are
+    recorded when the system is shut down or reboots.<br></dd>
 
-   </dl>
+    <dt><code>lastcomm</code></dt>
 
-   <p>For more detailed information on any of these programs, check the
-chapter with the program title.
+    <dd>lists the commands executed on the system, most recent
+    first, showing the run state of each command. With
+    <code>last</code>, you can search the <code>acct</code> file
+    for a particular user, terminal, or command.<br></dd>
 
-<h3 class="unnumberedsec">A Note on File Names and Locations</h3>
+    <dt><code>sa</code></dt>
 
-<p>The <code>wtmp</code> and <code>acct</code> files seem to live in different places
-and have different names for every variant of u*x that exists.  The name
-<code>wtmp</code> seems to be standard for the login accounting file, but the
-process accounting file might be <code>acct</code> or <code>pacct</code> on your
-system.  To find the actual locations and names of these files on your
-system, specify the <code>--help</code> flag to any of the programs in this
-package and the information will dumped to standard output.
+    <dd>summarizes the information in the <code>acct</code> file
+    into the <code>savacct</code> and <code>usracct</code> file. It
+    also generates reports about commands, giving the number of
+    invocations, cpu time used, average core usage, etc.<br></dd>
 
-   <p>Regardless of the names and locations of files on your system, this
-manual will refer to the login accounting file as <code>wtmp</code> and the
-process accounting files as <code>acct</code>, <code>savacct</code>, and
-<code>usracct</code>.
+    <dt><code>dump-acct</code></dt>
 
-<h3 class="unnumberedsec">History of the Accounting Utilities</h3>
+    <dt><code>dump-utmp</code></dt>
 
-<p>I don't have any idea who originally wrote these utilities.  If anybody
-does, please send some mail to <code>noel@gnu.ai.mit.edu</code> and I'll add
-your information here!
+    <dd>display <code>acct</code> and <code>utmp</code> files in a
+    human-readable format.</dd>
+  </dl>
 
-   <p>Since the first alpha versions of this software in late 1993, many
-people have contributed to the package.  They are (in alphabetical
-order):
+  <p>For more detailed information on any of these programs, check
+  the chapter with the program title.</p>
 
-<!-- If you've changed something in this package, add your name here! -->
-<dl>
-<dt><code>Eric Backus &lt;ericb@lsid.hp.com&gt;</code><dd>Suggested fixes for HP-UX 9.05 using /bin/cc: configure assumed you were
-using <code>gcc</code> and tacked on <code>-Wall</code> etc.  He also noticed that
-<code>file_rd.c</code> was doing pointer arithmetic on a <code>void *</code> pointer
-(non-ANSI).
+  <h3 class="unnumberedsec">A Note on File Names and Locations</h3>
 
-     <br><dt><code>Christoph Badura &lt;bad@flatlin.ka.sub.org&gt;</code><dd>Christoph was a BIG HELP in computing statistics, most notably k*sec
-stuff!  He also did Xenix testing and contributed some Makefile fixes
-and output optimizations.
+  <p>The <code>wtmp</code> and <code>acct</code> files seem to live
+  in different places and have different names for every variant of
+  u*x that exists. The name <code>wtmp</code> seems to be standard
+  for the login accounting file, but the process accounting file
+  might be <code>acct</code> or <code>pacct</code> on your system.
+  To find the actual locations and names of these files on your
+  system, specify the <code>--help</code> flag to any of the
+  programs in this package and the information will dumped to
+  standard output.</p>
 
-     <br><dt><code>Michael Calwas &lt;calwas@ttd.teradyne.com&gt;</code><dd>Fixed bugs in mktime.c.
+  <p>Regardless of the names and locations of files on your system,
+  this manual will refer to the login accounting file as
+  <code>wtmp</code> and the process accounting files as
+  <code>acct</code>, <code>savacct</code>, and
+  <code>usracct</code>.</p>
 
-     <br><dt><code>Derek Clegg &lt;dclegg@apple.com&gt;</code><dd>Suggested the simple, elegant fix for *_rd_never_used brain-damage.
+  <h3 class="unnumberedsec">History of the Accounting
+  Utilities</h3>
 
-     <br><dt><code>Alan Cox &lt;iiitac@pyr.swan.ac.uk&gt;</code><dd>Original Linux kernel accounting patches.
+  <p>I don't have any idea who originally wrote these utilities. If
+  anybody does, please send some mail to
+  <code>noel@gnu.ai.mit.edu</code> and I'll add your information
+  here!</p>
 
-     <br><dt><code>Scott Crosby &lt;root@hypercube.res.cmu.edu&gt;</code><dd>Suggested idea behind <code>--sort-real-time</code> for <code>sa</code>.
+  <p>Since the first alpha versions of this software in late 1993,
+  many people have contributed to the package. They are (in
+  alphabetical order): 
+  <!-- If you've changed something in this package, add your name here! --></p>
 
-     <br><dt><code>Solar Designer &lt;solar@false.com&gt;</code><dd>Added code for <code>--ahz</code> flag in <code>lastcomm</code> and <code>sa</code>.
+  <dl>
+    <dt><code>Eric Backus &lt;ericb@lsid.hp.com&gt;</code></dt>
 
-     <br><dt><code>Dirk Eddelbuettel &lt;edd@miles.econ.queensu.ca&gt;</code><dd>Managed bug-fixes &amp; etc. for Debian distribution, as well as the
-architect of merge of GNU + Debian distributions.  A big thanks to Dirk
-for kicking me back into gear again after a long period of no work on
-this project.
+    <dd>Suggested fixes for HP-UX 9.05 using /bin/cc: configure
+    assumed you were using <code>gcc</code> and tacked on
+    <code>-Wall</code> etc. He also noticed that
+    <code>file_rd.c</code> was doing pointer arithmetic on a
+    <code>void *</code> pointer (non-ANSI).<br></dd>
 
-     <br><dt><code>Jason Grant &lt;jamalcol@pc-5530.bc.rogers.wave.ca&gt;</code><dd>Identified a buffer-overrun bug in <code>sa</code>.
+    <dt><code>Christoph Badura
+    &lt;bad@flatlin.ka.sub.org&gt;</code></dt>
 
-     <br><dt><code>Kaveh R. Ghazi &lt;ghazi@caip.rutgers.edu&gt;</code><dd>Tested the package on many systems with compilers other than gcc.  Fixed
-K&amp;R C support.
+    <dd>Christoph was a BIG HELP in computing statistics, most
+    notably k*sec stuff! He also did Xenix testing and contributed
+    some Makefile fixes and output optimizations.<br></dd>
 
-     <br><dt><code>Susan Kleinmann &lt;sgk@sgk.tiac.net&gt;</code><dd>Contributed excellent man pages!
+    <dt><code>Michael Calwas
+    &lt;calwas@ttd.teradyne.com&gt;</code></dt>
 
-     <br><dt><code>Alexander Kourakos &lt;Alexander@Kourakos.com&gt;</code><dd>Inspired the <code>--wide</code> option for <code>last</code>.
+    <dd>Fixed bugs in mktime.c.<br></dd>
 
-     <br><dt><code>Marek Michalkiewicz &lt;marekm@i17linuxb.ists.pwr.wroc.pl&gt;</code><dd>Suggested the <code>--ip-address</code> flag for <code>last</code>.
+    <dt><code>Derek Clegg &lt;dclegg@apple.com&gt;</code></dt>
 
-     <br><dt><code>David S. Miller &lt;davem@caip.rutgers.edu&gt;</code><dd>Noticed missing GNU-standard makefile rules.
+    <dd>Suggested the simple, elegant fix for *_rd_never_used
+    brain-damage.<br></dd>
 
-     <br><dt><code>Walter Mueller &lt;walt@pi4.informatik.uni-mannheim.de&gt;</code><dd>Noticed install target was missing, and corrected a typo for prefix in
-Makefile.in.
+    <dt><code>Alan Cox &lt;iiitac@pyr.swan.ac.uk&gt;</code></dt>
 
-     <br><dt><code>Ian Murdock &lt;imurdock@gnu.ai.mit.edu&gt;</code><dd>Tracked down miscellaneous bugs in sa.c under Linux.  Added Debian
-package maintenance files.
+    <dd>Original Linux kernel accounting patches.<br></dd>
 
-     <br><dt><code>Tuomo Pyhala &lt;tuomo@lesti.kpnet.fi&gt;</code><dd>Reported buggy <code>--strict-match</code> flag in <code>lastcomm</code>.
+    <dt><code>Scott Crosby
+    &lt;root@hypercube.res.cmu.edu&gt;</code></dt>
 
-     <br><dt><code>Luc I. Suryo &lt;root@patriots.nl.mugnet.org&gt;</code><dd>Suggested the <code>--user</code> flag for <code>lastcomm</code>.
+    <dd>Suggested idea behind <code>--sort-real-time</code> for
+    <code>sa</code>.<br></dd>
 
-     <br><dt><code>Pedro A M Vazquez &lt;vazquez@iqm.unicamp.br&gt;</code><dd>Fixed bugs in sa.c and tested under FreeBSD.
+    <dt><code>Solar Designer &lt;solar@false.com&gt;</code></dt>
 
-     <br><dt><code>Marco van Wieringen &lt;Marco.van.Wieringen@mcs.nl.mugnet.org&gt;</code><dd>Modified (wrote?) Linux kernel accounting patches. 
-</dl>
+    <dd>Added code for <code>--ahz</code> flag in
+    <code>lastcomm</code> and <code>sa</code>.<br></dd>
 
-<!--  -->
-</body></html>
+    <dt><code>Dirk Eddelbuettel
+    &lt;edd@miles.econ.queensu.ca&gt;</code></dt>
 
+    <dd>Managed bug-fixes &amp; etc. for Debian distribution, as
+    well as the architect of merge of GNU + Debian distributions. A
+    big thanks to Dirk for kicking me back into gear again after a
+    long period of no work on this project.<br></dd>
+
+    <dt><code>Jason Grant
+    &lt;jamalcol@pc-5530.bc.rogers.wave.ca&gt;</code></dt>
+
+    <dd>Identified a buffer-overrun bug in
+    <code>sa</code>.<br></dd>
+
+    <dt><code>Kaveh R. Ghazi
+    &lt;ghazi@caip.rutgers.edu&gt;</code></dt>
+
+    <dd>Tested the package on many systems with compilers other
+    than gcc. Fixed K&amp;R C support.<br></dd>
+
+    <dt><code>Susan Kleinmann &lt;sgk@sgk.tiac.net&gt;</code></dt>
+
+    <dd>Contributed excellent man pages!<br></dd>
+
+    <dt><code>Alexander Kourakos
+    &lt;Alexander@Kourakos.com&gt;</code></dt>
+
+    <dd>Inspired the <code>--wide</code> option for
+    <code>last</code>.<br></dd>
+
+    <dt><code>Marek Michalkiewicz
+    &lt;marekm@i17linuxb.ists.pwr.wroc.pl&gt;</code></dt>
+
+    <dd>Suggested the <code>--ip-address</code> flag for
+    <code>last</code>.<br></dd>
+
+    <dt><code>David S. Miller
+    &lt;davem@caip.rutgers.edu&gt;</code></dt>
+
+    <dd>Noticed missing GNU-standard makefile rules.<br></dd>
+
+    <dt><code>Walter Mueller
+    &lt;walt@pi4.informatik.uni-mannheim.de&gt;</code></dt>
+
+    <dd>Noticed install target was missing, and corrected a typo
+    for prefix in Makefile.in.<br></dd>
+
+    <dt><code>Ian Murdock
+    &lt;imurdock@gnu.ai.mit.edu&gt;</code></dt>
+
+    <dd>Tracked down miscellaneous bugs in sa.c under Linux. Added
+    Debian package maintenance files.<br></dd>
+
+    <dt><code>Tuomo Pyhala &lt;tuomo@lesti.kpnet.fi&gt;</code></dt>
+
+    <dd>Reported buggy <code>--strict-match</code> flag in
+    <code>lastcomm</code>.<br></dd>
+
+    <dt><code>Luc I. Suryo
+    &lt;root@patriots.nl.mugnet.org&gt;</code></dt>
+
+    <dd>Suggested the <code>--user</code> flag for
+    <code>lastcomm</code>.<br></dd>
+
+    <dt><code>Pedro A M Vazquez
+    &lt;vazquez@iqm.unicamp.br&gt;</code></dt>
+
+    <dd>Fixed bugs in sa.c and tested under FreeBSD.<br></dd>
+
+    <dt><code>Marco van Wieringen
+    &lt;Marco.van.Wieringen@mcs.nl.mugnet.org&gt;</code></dt>
+
+    <dd>Modified (wrote?) Linux kernel accounting patches.</dd>
+  </dl><!--  -->
+</body>
+</html>
