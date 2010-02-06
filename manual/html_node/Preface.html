@@ -8,7 +8,7 @@
   <title>Preface - Accounting Utilities Manual</title>
   <meta http-equiv="Content-Type" content="text/html">
   <meta name="description" content="Accounting Utilities Manual">
-  <meta name="generator" content="makeinfo 4.8">
+  <meta name="generator" content="makeinfo 4.13">
   <link title="Top" rel="start" href="index.html#Top">
   <link rel="prev" href="index.html#Top" title="Top">
   <link rel="next" href="ac.html#ac" title="ac">
@@ -32,10 +32,11 @@
 
 <body>
   <div class="node">
-    <p><a name="Preface" id="Preface"></a>
-    n&auml;chstes:&nbsp;<a rel="next" accesskey="n" href=
-    "ac.html#ac">ac</a>, voriges:&nbsp;<a rel="previous" accesskey=
-    "p" href="index.html#Top">Top</a>, aufw&auml;rts:&nbsp;<a rel=
+    <a name="Preface" id="Preface"></a>
+
+    <p>Next:&nbsp;<a rel="next" accesskey="n" href=
+    "ac.html#ac">ac</a>, Previous:&nbsp;<a rel="previous"
+    accesskey="p" href="index.html#Top">Top</a>, Up:&nbsp;<a rel=
     "up" accesskey="u" href="index.html#Top">Top</a></p>
     <hr>
   </div>
@@ -64,6 +65,19 @@
   and charge them through the nose for their CPU time...&rdquo;</p>
 
   <p>The accounting utilities were born.</p>
+
+  <p>Years later Markus Gothe was a facing the CEO at his work,
+  keep asking him where and how he got the information on other
+  employees payrolls. There was indeed a conflict, Markus denied
+  all the modus operandi on how to get held of such copies or
+  information. Plans was made up to frame him, by interception.</p>
+
+  <p>This momement Markus realized the words of Rob Savoye
+  &ldquo;You cannot buy yourself free from guilt.&rdquo; He left
+  the room with pride, for making a stand. However, sadly enogh,
+  the CEO never realized that meaning. You cannot buy yourself free
+  from guilt; A new revival had come for the GNU acccounting
+  utilities and so a POSIX-standard.</p>
 
   <p>Seriously though, the accouting utilities can provide a system
   administrator with useful information about system
@@ -100,9 +114,10 @@
     <code>last</code>, you can search the <code>wtmp</code> file
     for a particular user or terminal name (to which the user was
     connected). Of special interest are two fake users,
-    `<samp><span class="samp">reboot</span></samp>' and
-    `<samp><span class="samp">shutdown</span></samp>', which are
-    recorded when the system is shut down or reboots.<br></dd>
+    &lsquo;<samp><span class="samp">reboot</span></samp>&rsquo; and
+    &lsquo;<samp><span class="samp">shutdown</span></samp>&rsquo;,
+    which are recorded when the system is shut down or
+    reboots.<br></dd>
 
     <dt><code>lastcomm</code></dt>
 
@@ -146,6 +161,45 @@
   <code>wtmp</code> and the process accounting files as
   <code>acct</code>, <code>savacct</code>, and
   <code>usracct</code>.</p>
+
+  <h3 class="unnumberedsec">Support for Multiple Accounting File
+  Formats under Linux</h3>
+
+  <p>The detailed format of the <code>acct</code> file written by
+  the Linux kernel varies depending on the kernel's version and
+  configuration: Linux kernels 2.6.7 and earlier write a v0 format
+  <code>acct</code> file which unfortunately cannot store user and
+  group ids (<code>uid</code>/<code>gid</code>) larger than 65535.
+  Kernels 2.6.8 and later write the <code>acct</code> file in v1,
+  v2 or v3 formats. (v3 if <code>BSD_PROCESS_ACCT_V3</code> is
+  selected in the kernel configuration, otherwise v1 if on the m68k
+  architecture or v2 everywhere else).</p>
+
+  <p>Since version 6.4 the GNU accounting utilities on Linux
+  systems are able to read all of the v0, v2 and v3 file formats
+  (v1 is not supported). Thus you do not need to worry about the
+  details given above. You can even read <code>acct</code> files
+  where different records were written by differently configured
+  kernels (you can find out about the format of each entry by using
+  the <code>dump-acct</code> utility). In case you ever need to
+  convert an <code>acct</code> file to a different format, the
+  <code>--raw</code> option of <code>dump-acct</code> does that
+  together with the new <code>--format</code> and
+  <code>--byteswap</code> options that determine format and byte
+  order of the output file.</p>
+
+  <p>Multiformat support under Linux is intended to be a temporary
+  solution to aid in switching to the v3 <code>acct</code> file
+  format. So do not expect GNU acct 6.7 to still contain
+  Multiformat support. In a few years time, when everybody uses the
+  v3 format, the ability to read multiple formats at runtime will
+  probably be dropped again from the GNU accounting utilities. This
+  does not, however, affect the ability to adapt to the
+  <code>acct</code> file format at compile time (when
+  <code>./configure</code> is run). Even GNU acct 6.3.5 (that does
+  not know about multiple file formats) will yield working binary
+  programs when compiled under a (as yet hypothetical) Linux kernel
+  2.6.62 that is only able to write the v3 format.</p>
 
   <h3 class="unnumberedsec">History of the Accounting
   Utilities</h3>
@@ -258,6 +312,11 @@
 
     <dd>Reported buggy <code>--strict-match</code> flag in
     <code>lastcomm</code>.<br></dd>
+
+    <dt><code>Tim Schmielau
+    &lt;tim@physik3.uni-rostock.de&gt;</code></dt>
+
+    <dd>Added Linux multiformat support.<br></dd>
 
     <dt><code>Luc I. Suryo
     &lt;root@patriots.nl.mugnet.org&gt;</code></dt>

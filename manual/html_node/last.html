@@ -8,7 +8,7 @@
   <title>last - Accounting Utilities Manual</title>
   <meta http-equiv="Content-Type" content="text/html">
   <meta name="description" content="Accounting Utilities Manual">
-  <meta name="generator" content="makeinfo 4.8">
+  <meta name="generator" content="makeinfo 4.13">
   <link title="Top" rel="start" href="index.html#Top">
   <link rel="prev" href="accton.html#accton" title="accton">
   <link rel="next" href="lastcomm.html#lastcomm" title="lastcomm">
@@ -32,11 +32,12 @@
 
 <body>
   <div class="node">
-    <p><a name="last" id="last"></a> n&auml;chstes:&nbsp;<a rel=
-    "next" accesskey="n" href=
-    "lastcomm.html#lastcomm">lastcomm</a>, voriges:&nbsp;<a rel=
+    <a name="last" id="last"></a>
+
+    <p>Next:&nbsp;<a rel="next" accesskey="n" href=
+    "lastcomm.html#lastcomm">lastcomm</a>, Previous:&nbsp;<a rel=
     "previous" accesskey="p" href="accton.html#accton">accton</a>,
-    aufw&auml;rts:&nbsp;<a rel="up" accesskey="u" href=
+    Up:&nbsp;<a rel="up" accesskey="u" href=
     "index.html#Top">Top</a></p>
     <hr>
   </div>
@@ -47,19 +48,20 @@
   (which records all logins/logouts) and prints information about
   connect times of users. Records are printed from most recent to
   least recent. Records can be specified by tty and username. tty
-  names can be abbreviated: `<samp><span class="samp">last
-  0</span></samp>' is equivalent to `<samp><span class="samp">last
-  tty0</span></samp>'.</p>
+  names can be abbreviated: &lsquo;<samp><span class="samp">last
+  0</span></samp>&rsquo; is equivalent to &lsquo;<samp><span class=
+  "samp">last tty0</span></samp>&rsquo;.</p>
 
-  <p>Multiple arguments can be specified: `<samp><span class=
-  "samp">last root console</span></samp>' will print all of the
-  entries for the user <code>root</code> and all entries logged in
-  on the <code>console</code> tty.</p>
+  <p>Multiple arguments can be specified: &lsquo;<samp><span class=
+  "samp">last root console</span></samp>&rsquo; will print all of
+  the entries for the user <code>root</code> and all entries logged
+  in on the <code>console</code> tty.</p>
 
   <p>The special users <code>reboot</code> and
   <code>shutdown</code> log in when the system reboots or
-  (surprise) shuts down. `<samp><span class="samp">last
-  reboot</span></samp>' will produce a record of reboot times.</p>
+  (surprise) shuts down. &lsquo;<samp><span class="samp">last
+  reboot</span></samp>&rsquo; will produce a record of reboot
+  times.</p>
 
   <p>If <code>last</code> is interrupted by a quit signal, it
   prints out how far its search in the <code>wtmp</code> file had
