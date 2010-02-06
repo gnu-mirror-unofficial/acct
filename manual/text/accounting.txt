@@ -1,5 +1,5 @@
-GNU Accounting Utilities Copyright (C) 1993, 1996, 1997 Free Software
-Foundation, Inc.
+GNU Accounting Utilities Copyright (C) 1993, 1996, 1997, 1998, 2005,
+2008, 2009, 2010 Free Software Foundation, Inc.
 
    Permission is granted to make and distribute verbatim copies of this
 manual provided the copyright notice and this permission notice are
@@ -20,8 +20,8 @@ about the accounting utilities, read the introduction.  For specfic
 information about any of the applications, see the chapter with the
 program's name.
 
-   This is Edition 6.3.5 of the documentation, updated 26 May 1998 for
-version 6.3.5 of the GNU Accounting Utilities.
+   This is Edition 6.5.3 of the documentation, updated 23 January 2010
+for version 6.5.3 of the GNU Accounting Utilities.
 
 Preface
 *******
@@ -45,6 +45,18 @@ money, of course!  If there were some way that we could keep tabs on
 users and charge them through the nose for their CPU time..."
 
    The accounting utilities were born.
+
+   Years later Markus Gothe was a facing the CEO at his work, keep
+asking him where and how he got the information on other employees
+payrolls.  There was indeed a conflict, Markus denied all the modus
+operandi on how to get held of such copies or information. Plans was
+made up to frame him, by interception.
+
+   This momement Markus realized the words of Rob Savoye "You cannot
+buy yourself free from guilt." He left the room with pridefull, for
+making a stand. However, sadly enogh, the CEO never realized that
+meaning. You cannot buy yourself free from guilt; A new revival had
+come for the GNU acccounting utilities and so a POSIX-standard.
 
    Seriously though, the accouting utilities can provide a system
 administrator with useful information about system usage--connections,
@@ -108,6 +120,41 @@ information will dumped to standard output.
    Regardless of the names and locations of files on your system, this
 manual will refer to the login accounting file as `wtmp' and the
 process accounting files as `acct', `savacct', and `usracct'.
+
+Support for Multiple Accounting File Formats under Linux
+========================================================
+
+The detailed format of the `acct' file written by the Linux kernel
+varies depending on the kernel's version and configuration: Linux
+kernels 2.6.7 and earlier write a v0 format `acct' file which
+unfortunately cannot store user and group ids (`uid'/`gid') larger than
+65535.  Kernels 2.6.8 and later write the `acct' file in v1, v2 or v3
+formats.  (v3 if `BSD_PROCESS_ACCT_V3' is selected in the kernel
+configuration, otherwise v1 if on the m68k architecture or v2
+everywhere else).
+
+   Since version 6.4 the GNU accounting utilities on Linux systems are
+able to read all of the v0, v2 and v3 file formats (v1 is not
+supported).  Thus you do not need to worry about the details given
+above. You can even read `acct' files where different records were
+written by differently configured kernels (you can find out about the
+format of each entry by using the `dump-acct' utility). In case you
+ever need to convert an `acct' file to a different format, the `--raw'
+option of `dump-acct' does that together with the new `--format' and
+`--byteswap' options that determine format and byte order of the output
+file.
+
+   Multiformat support under Linux is intended to be a temporary
+solution to aid in switching to the v3 `acct' file format. So do not
+expect GNU acct 6.7 to still contain Multiformat support. In a few years
+time, when everybody uses the v3 format, the ability to read multiple
+formats at runtime will probably be dropped again from the GNU
+accounting utilities.  This does not, however, affect the ability to
+adapt to the `acct' file format at compile time (when `./configure' is
+run). Even GNU acct 6.3.5 (that does not know about multiple file
+formats) will yield working binary programs when compiled under a (as
+yet hypothetical) Linux kernel 2.6.62 that is only able to write the v3
+format.
 
 History of the Accounting Utilities
 ===================================
@@ -182,6 +229,9 @@ order):
 `Tuomo Pyhala <tuomo@lesti.kpnet.fi>'
      Reported buggy `--strict-match' flag in `lastcomm'.
 
+`Tim Schmielau <tim@physik3.uni-rostock.de>'
+     Added Linux multiformat support.
+
 `Luc I. Suryo <root@patriots.nl.mugnet.org>'
      Suggested the `--user' flag for `lastcomm'.
 
@@ -201,7 +251,7 @@ printed out.
    The accounting file `wtmp' is maintained by `init' and `login'.
 Neither of these programs creates the file; if the file is not there,
 no accounting is done.  To begin accounting, create the file with a
-length of zero.  *NOTE:* the `wtmp' file can get really big, really
+length of zero. *NOTE:* the `wtmp' file can get really big, really
 fast.  You might want to trim it every once and a while.
 
    GNU `ac' works nearly the same u*x `ac', though it's a little
@@ -534,7 +584,7 @@ The Clock Change Problem
 ........................
 
 Of the `last's I've tried, all of them have had problems parsing a
-system clock change.  Instead of modifying the entries that have been
+system clock change. Instead of modifying the entries that have been
 read, they just ignore the change and give you incorrect values.  GNU
 `last' knows about clock changes and prints the correct times.
 
@@ -632,6 +682,10 @@ output looks like this:
      format as your current machine, but has a different value for
      `AHZ'.
 
+`-p'
+`--show-paging'
+     Print paging statistics
+
 `--debug'
      Print verbose internal information.
 
@@ -657,7 +711,8 @@ into `usracct'.  Usage:
    If no arguments are specified, `sa' will print information about all
 of the commands in the `acct' file.  If command names have unprintable
 characters, or are only called once, `sa' will sort them into a group
-called `***other'.
+called `***other'.  Overall totals for each field are gathered and
+printed with a blank command name.
 
    If called with a file name as the last argument, `sa' will use that
 file instead of `acct'.
@@ -773,6 +828,15 @@ determine which flags will be present.  For example, if your system's
      Sort the output by the number of calls.  This is the default
      sorting method.
 
+`-p'
+`--show-paging'
+     Print the number of minor and major pagefaults and swaps.
+
+`-P'
+`--show-paging-avg'
+     Print the number of minor and major pagefaults and swaps divided by
+     the number of calls.
+
 `-r'
 `--reverse-sort'
      Sort output items in reverse order.
@@ -850,11 +914,106 @@ The average memory use is stored as a short rather than a double, so we
 suffer from round-off errors.  GNU `sa' uses double the whole way
 through.
 
-Inhaltsverzeichnis
-******************
+6 `dump-acct'
+*************
+
+`dump-acct' dumps some of the contents of one or more `acct' files in
+human readable form.  Usage:
+
+   `dump-acct [OPTS] FILES'
+
+   Unless called with the `--raw' option, it prints a table with the
+following fields, separated by vertical bars(`|'):
+
+`ac_comm'
+     name of the executed program
+
+`ac_version'
+     version of the `acct' file format
+
+`ac_utime'
+     user time
+
+`ac_stime'
+     system time
+
+`ac_etime'
+     elapsed time
+
+`ac_uid'
+     user id
+
+`ac_gid'
+     group id
+
+`ac_mem'
+     (average) memory usage
+
+`ac_io'
+     number of characters transferred on input/output
+
+`ac_pid'
+     process id
+
+`ac_ppid'
+     parent's process id
+
+
+   All times will be given in platform dependent units ("`AHZ'").  Not
+all of the above columns will actually appear, depending on what
+information your operating system provides in it's `struct acct'.
+
+6.1 Flags
+=========
+
+`--ahz HZ'
+     Use this flag to tell the program what `AHZ' should be (in Hertz).
+     This option is useful if you are trying to view an `acct' file
+     created on another machine which has a different value for `AHZ'.
+
+`--byteswap'
+     Swap the bytes (relative to your system's native byte order) in
+     `--raw' output.
+
+`--format'
+     Set output format with `--raw' option.
+
+`-n NUM'
+`--num NUM'
+     Limit the number of lines (or records with `--raw') to print.
+
+`-r'
+`--reverse'
+     Read the accounting file backwards (print latest record first).
+
+`-R'
+`--raw'
+     Don't print human readable output, dump the raw record instead.
+     Useful to convert between different Linux file formats (see below).
+
+`-h'
+`--help'
+     Print `dump-acct''s usage string and default location of the
+     accouning file to standard output.
+
+
+   `--byteswap' and `--format' options are only available with Linux
+multiformat support. They only affect _output_ with the `--raw' option,
+format and byte order of the input are automatically detected.  Thus
+they are useful to convert between different file formats.
+
+   The `--ahz' option affects input and output (except for v3 file
+format, which by definition is fixed to `AHZ=100').  If you ever need
+to convert between different `AHZ' values, use a two-step process:
+First convert to v3 format with the _old_ `AHZ' value, then convert to
+the desired output format with the _new_ `AHZ' setting.
+
+Table of Contents
+*****************
 
 Preface
   A Note on File Names and Locations
+  Support for Multiple Accounting File Formats under Linux
   History of the Accounting Utilities
 1 `ac'
   1.1 Flags
@@ -875,5 +1034,7 @@ Preface
   5.1 Flags
   5.2 Problems
     5.2.1 mips sa
+6 `dump-acct'
+  6.1 Flags
 
 
