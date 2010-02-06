@@ -8,9 +8,11 @@
   <title>sa - Accounting Utilities Manual</title>
   <meta http-equiv="Content-Type" content="text/html">
   <meta name="description" content="Accounting Utilities Manual">
-  <meta name="generator" content="makeinfo 4.8">
+  <meta name="generator" content="makeinfo 4.13">
   <link title="Top" rel="start" href="index.html#Top">
   <link rel="prev" href="lastcomm.html#lastcomm" title="lastcomm">
+  <link rel="next" href="dump_002dacct.html#dump_002dacct" title=
+  "dump-acct">
   <link href="http://www.gnu.org/software/texinfo/" rel=
   "generator-home" title="Texinfo Homepage">
   <meta http-equiv="Content-Style-Type" content="text/css">
@@ -27,17 +29,17 @@
   span.sansserif { font-family:sans-serif; font-weight:normal; } 
   -->
   </style>
-  <style type="text/css">
-div.c1 {margin-left: 2em}
-  </style>
 </head>
 
 <body>
   <div class="node">
-    <p><a name="sa" id="sa"></a> voriges:&nbsp;<a rel="previous"
-    accesskey="p" href="lastcomm.html#lastcomm">lastcomm</a>,
-    aufw&auml;rts:&nbsp;<a rel="up" accesskey="u" href=
-    "index.html#Top">Top</a></p>
+    <a name="sa" id="sa"></a>
+
+    <p>Next:&nbsp;<a rel="next" accesskey="n" href=
+    "dump_002dacct.html#dump_002dacct">dump-acct</a>,
+    Previous:&nbsp;<a rel="previous" accesskey="p" href=
+    "lastcomm.html#lastcomm">lastcomm</a>, Up:&nbsp;<a rel="up"
+    accesskey="u" href="index.html#Top">Top</a></p>
     <hr>
   </div>
 
@@ -58,7 +60,8 @@ div.c1 {margin-left: 2em}
   information about all of the commands in the <code>acct</code>
   file. If command names have unprintable characters, or are only
   called once, <code>sa</code> will sort them into a group called
-  <code>***other</code>.</p>
+  <code>***other</code>. Overall totals for each field are gathered
+  and printed with a blank command name.</p>
 
   <p>If called with a file name as the last argument,
   <code>sa</code> will use that file instead of
@@ -221,6 +224,20 @@ div.c1 {margin-left: 2em}
     <dd>Sort the output by the number of calls. This is the default
     sorting method.<br></dd>
 
+    <dt><code>-p</code></dt>
+
+    <dt><code>--show-paging</code></dt>
+
+    <dd>Print the number of minor and major pagefaults and
+    swaps.<br></dd>
+
+    <dt><code>-P</code></dt>
+
+    <dt><code>--show-paging-avg</code></dt>
+
+    <dd>Print the number of minor and major pagefaults and swaps
+    divided by the number of calls.<br></dd>
+
     <dt><code>-r</code></dt>
 
     <dt><code>--reverse-sort</code></dt>
@@ -323,114 +340,6 @@ div.c1 {margin-left: 2em}
 
   <p>The average memory use is stored as a short rather than a
   double, so we suffer from round-off errors. GNU <code>sa</code>
-  uses double the whole way through. <!--  -->
-   <!-- @node Index,  , sa, Top -->
-   <!-- @unnumbered Index -->
-   <!-- @printindex cp --></p>
-
-  <div class="contents">
-    <h2>Inhaltsverzeichnis</h2>
-
-    <ul>
-      <li><a name="toc_Top" href="index.html#Top" id=
-      "toc_Top">Top</a></li>
-
-      <li>
-        <a name="toc_Preface" href="Preface.html#Preface" id=
-        "toc_Preface">Preface</a>
-
-        <ul>
-          <li><a href="Preface.html#Preface">A Note on File Names
-          and Locations</a></li>
-
-          <li><a href="Preface.html#Preface">History of the
-          Accounting Utilities</a></li>
-        </ul>
-      </li>
-
-      <li>
-        <a name="toc_ac" href="ac.html#ac" id="toc_ac">1
-        <code>ac</code></a>
-
-        <ul>
-          <li><a href="ac.html#ac">1.1 Flags</a></li>
-
-          <li>
-            <a href="ac.html#ac">1.2 Problems</a>
-
-            <div class="c1">
-              <ul>
-                <li><a href="ac.html#ac">The FTP Problem</a></li>
-
-                <li><a href="ac.html#ac">The Shutdown/Reboot
-                Problem</a></li>
-
-                <li><a href="ac.html#ac">Stupid System V
-                Machines</a></li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </li>
-
-      <li>
-        <a name="toc_accton" href="accton.html#accton" id=
-        "toc_accton">2 <code>accton</code></a>
-
-        <ul>
-          <li><a href="accton.html#accton">2.1 Flags</a></li>
-        </ul>
-      </li>
-
-      <li>
-        <a name="toc_last" href="last.html#last" id="toc_last">3
-        <code>last</code></a>
-
-        <ul>
-          <li><a href="last.html#last">3.1 Flags</a></li>
-
-          <li>
-            <a href="last.html#last">3.2 Problems</a>
-
-            <div class="c1">
-              <ul>
-                <li><a href="last.html#last">The Clock Change
-                Problem</a></li>
-
-                <li><a href="last.html#last">The Ftp
-                Problem</a></li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </li>
-
-      <li>
-        <a name="toc_lastcomm" href="lastcomm.html#lastcomm" id=
-        "toc_lastcomm">4 <code>lastcomm</code></a>
-
-        <ul>
-          <li><a href="lastcomm.html#lastcomm">4.1 Flags</a></li>
-        </ul>
-      </li>
-
-      <li>
-        <a name="toc_sa" href="sa.html#sa" id="toc_sa">5
-        <code>sa</code></a>
-
-        <ul>
-          <li><a href="sa.html#sa">5.1 Flags</a></li>
-
-          <li>
-            <a href="sa.html#sa">5.2 Problems</a>
-
-            <ul>
-              <li><a href="sa.html#sa">5.2.1 mips sa</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </div>
+  uses double the whole way through. <!--  --></p>
 </body>
 </html>

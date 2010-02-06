@@ -1,0 +1,294 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+<html lang="en">
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Linux/x86 (vers 25 March 2009), see www.w3.org">
+
+  <title>dump-acct - Accounting Utilities Manual</title>
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Accounting Utilities Manual">
+  <meta name="generator" content="makeinfo 4.13">
+  <link title="Top" rel="start" href="index.html#Top">
+  <link rel="prev" href="sa.html#sa" title="sa">
+  <link href="http://www.gnu.org/software/texinfo/" rel=
+  "generator-home" title="Texinfo Homepage">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <style type="text/css">
+<!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+  -->
+  </style>
+  <style type="text/css">
+div.c1 {margin-left: 2em}
+  </style>
+</head>
+
+<body>
+  <div class="node">
+    <a name="dump-acct" id="dump-acct"></a> <a name="dump_002dacct"
+    id="dump_002dacct"></a>
+
+    <p>Previous:&nbsp;<a rel="previous" accesskey="p" href=
+    "sa.html#sa">sa</a>, Up:&nbsp;<a rel="up" accesskey="u" href=
+    "index.html#Top">Top</a></p>
+    <hr>
+  </div>
+
+  <h2 class="chapter">6 <code>dump-acct</code></h2>
+
+  <p><code>dump-acct</code> dumps some of the contents of one or
+  more <code>acct</code> files in human readable form. Usage:</p>
+
+  <p><code>dump-acct [</code><var>opts</var><code>]</code>
+  <var>files</var></p>
+
+  <p>Unless called with the <code>--raw</code> option, it prints a
+  table with the following fields, separated by vertical
+  bars(<code>|</code>):</p>
+
+  <dl>
+    <dt><code>ac_comm</code></dt>
+
+    <dd>name of the executed program<br></dd>
+
+    <dt><code>ac_version</code></dt>
+
+    <dd>version of the <code>acct</code> file format<br></dd>
+
+    <dt><code>ac_utime</code></dt>
+
+    <dd>user time<br></dd>
+
+    <dt><code>ac_stime</code></dt>
+
+    <dd>system time<br></dd>
+
+    <dt><code>ac_etime</code></dt>
+
+    <dd>elapsed time<br></dd>
+
+    <dt><code>ac_uid</code></dt>
+
+    <dd>user id<br></dd>
+
+    <dt><code>ac_gid</code></dt>
+
+    <dd>group id<br></dd>
+
+    <dt><code>ac_mem</code></dt>
+
+    <dd>(average) memory usage<br></dd>
+
+    <dt><code>ac_io</code></dt>
+
+    <dd>number of characters transferred on input/output<br></dd>
+
+    <dt><code>ac_pid</code></dt>
+
+    <dd>process id<br></dd>
+
+    <dt><code>ac_ppid</code></dt>
+
+    <dd>parent's process id</dd>
+  </dl>
+
+  <p>All times will be given in platform dependent units
+  (&ldquo;<code>AHZ</code>&rdquo;). Not all of the above columns
+  will actually appear, depending on what information your
+  operating system provides in it's <code>struct acct</code>.</p>
+
+  <h3 class="section">6.1 Flags</h3>
+
+  <dl>
+    <dt><code>--ahz</code> <var>hz</var></dt>
+
+    <dd>Use this flag to tell the program what <code>AHZ</code>
+    should be (in Hertz). This option is useful if you are trying
+    to view an <code>acct</code> file created on another machine
+    which has a different value for <code>AHZ</code>.<br></dd>
+
+    <dt><code>--byteswap</code></dt>
+
+    <dd>Swap the bytes (relative to your system's native byte
+    order) in <code>--raw</code> output.<br></dd>
+
+    <dt><code>--format</code></dt>
+
+    <dd>Set output format with <code>--raw</code> option.<br></dd>
+
+    <dt><code>-n</code> <var>num</var></dt>
+
+    <dt><code>--num</code> <var>num</var></dt>
+
+    <dd>Limit the number of lines (or records with
+    <code>--raw</code>) to print.<br></dd>
+
+    <dt><code>-r</code></dt>
+
+    <dt><code>--reverse</code></dt>
+
+    <dd>Read the accounting file backwards (print latest record
+    first).<br></dd>
+
+    <dt><code>-R</code></dt>
+
+    <dt><code>--raw</code></dt>
+
+    <dd>Don't print human readable output, dump the raw record
+    instead. Useful to convert between different Linux file formats
+    (see below).<br></dd>
+
+    <dt><code>-h</code></dt>
+
+    <dt><code>--help</code></dt>
+
+    <dd>Print <code>dump-acct</code>'s usage string and default
+    location of the accouning file to standard output.</dd>
+  </dl>
+
+  <p><code>--byteswap</code> and <code>--format</code> options are
+  only available with Linux multiformat support. They only affect
+  <em>output</em> with the <code>--raw</code> option, format and
+  byte order of the input are automatically detected. Thus they are
+  useful to convert between different file formats.</p>
+
+  <p>The <code>--ahz</code> option affects input and output (except
+  for v3 file format, which by definition is fixed to
+  <code>AHZ=100</code>). If you ever need to convert between
+  different <code>AHZ</code> values, use a two-step process: First
+  convert to v3 format with the <em>old</em> <code>AHZ</code>
+  value, then convert to the desired output format with the
+  <em>new</em> <code>AHZ</code> setting. <!--  -->
+   <!-- @node Index,  , dump-acct, Top -->
+   <!-- @unnumbered Index -->
+   <!-- @printindex cp --></p>
+
+  <div class="contents">
+    <h2>Table of Contents</h2>
+
+    <ul>
+      <li><a name="toc_Top" href="index.html#Top" id=
+      "toc_Top">Top</a></li>
+
+      <li>
+        <a name="toc_Preface" href="Preface.html#Preface" id=
+        "toc_Preface">Preface</a>
+
+        <ul>
+          <li><a href="Preface.html#Preface">A Note on File Names
+          and Locations</a></li>
+
+          <li><a href="Preface.html#Preface">Support for Multiple
+          Accounting File Formats under Linux</a></li>
+
+          <li><a href="Preface.html#Preface">History of the
+          Accounting Utilities</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a name="toc_ac" href="ac.html#ac" id="toc_ac">1
+        <code>ac</code></a>
+
+        <ul>
+          <li><a href="ac.html#ac">1.1 Flags</a></li>
+
+          <li>
+            <a href="ac.html#ac">1.2 Problems</a>
+
+            <div class="c1">
+              <ul>
+                <li><a href="ac.html#ac">The FTP Problem</a></li>
+
+                <li><a href="ac.html#ac">The Shutdown/Reboot
+                Problem</a></li>
+
+                <li><a href="ac.html#ac">Stupid System V
+                Machines</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <a name="toc_accton" href="accton.html#accton" id=
+        "toc_accton">2 <code>accton</code></a>
+
+        <ul>
+          <li><a href="accton.html#accton">2.1 Flags</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a name="toc_last" href="last.html#last" id="toc_last">3
+        <code>last</code></a>
+
+        <ul>
+          <li><a href="last.html#last">3.1 Flags</a></li>
+
+          <li>
+            <a href="last.html#last">3.2 Problems</a>
+
+            <div class="c1">
+              <ul>
+                <li><a href="last.html#last">The Clock Change
+                Problem</a></li>
+
+                <li><a href="last.html#last">The Ftp
+                Problem</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <a name="toc_lastcomm" href="lastcomm.html#lastcomm" id=
+        "toc_lastcomm">4 <code>lastcomm</code></a>
+
+        <ul>
+          <li><a href="lastcomm.html#lastcomm">4.1 Flags</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a name="toc_sa" href="sa.html#sa" id="toc_sa">5
+        <code>sa</code></a>
+
+        <ul>
+          <li><a href="sa.html#sa">5.1 Flags</a></li>
+
+          <li>
+            <a href="sa.html#sa">5.2 Problems</a>
+
+            <ul>
+              <li><a href="sa.html#sa">5.2.1 mips sa</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <a name="toc_dump_002dacct" href=
+        "dump_002dacct.html#dump_002dacct" id="toc_dump_002dacct">6
+        <code>dump-acct</code></a>
+
+        <ul>
+          <li><a href="dump_002dacct.html#dump_002dacct">6.1
+          Flags</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>
