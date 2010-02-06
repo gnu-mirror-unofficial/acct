@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html401/loose.dtd">
+
+<html>
+<!-- Created on February, 6 2010 by texi2html 1.76 -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Linux/x86 (vers 25 March 2009), see www.w3.org">
+
+  <title>Accounting Utilities Manual: 4. lastcomm</title>
+  <meta name="description" content=
+  "Accounting Utilities Manual: 4. lastcomm">
+  <meta name="keywords" content=
+  "Accounting Utilities Manual: 4. lastcomm">
+  <meta name="resource-type" content="document">
+  <meta name="distribution" content="global">
+  <meta name="Generator" content="texi2html 1.76">
+  <meta http-equiv="Content-Type" content=
+  "text/html; charset=us-ascii">
+  <style type="text/css">
+<!--
+  a.summary-letter {text-decoration: none}
+  pre.display {font-family: serif}
+  pre.format {font-family: serif}
+  pre.menu-comment {font-family: serif}
+  pre.menu-preformatted {font-family: serif}
+  pre.smalldisplay {font-family: serif; font-size: smaller}
+  pre.smallexample {font-size: smaller}
+  pre.smallformat {font-family: serif; font-size: smaller}
+  pre.smalllisp {font-size: smaller}
+  span.sansserif {font-family:sans-serif; font-weight:normal;}
+  ul.toc {list-style: none}
+  -->
+  </style>
+  <style type="text/css">
+body {
+  background-color: #FFFFFF;
+  color: #000000;
+  }
+  :link { color: #0000FF }
+  :visited { color: #800080 }
+  :active { color: #FF0000 }
+  span.c16 {font-size: 80%}
+  a.c15 {font-style: italic}
+  </style>
+</head>
+
+<body lang="en">
+  <a name="lastcomm" id="lastcomm"></a> <a name="SEC18" id=
+  "SEC18"></a>
+
+  <table cellpadding="1" cellspacing="1" border="0">
+    <tr>
+      <td valign="middle" align="left">[ <a href=
+      "accounting_16.html#SEC17" title=
+      "Previous section in reading order">&lt;</a> ]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_18.html#SEC19" title=
+      "Next section in reading order">&gt;</a> ]</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_12.html#SEC13" title=
+      "Beginning of this chapter or previous chapter">&lt;&lt;</a>
+      ]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting.html#SEC1" title="Up section">Up</a> ]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_19.html#SEC20" title="Next chapter">&gt;&gt;</a>
+      ]</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">[<a href=
+      "accounting.html#SEC1" title=
+      "Cover (top) of document">Top</a>]</td>
+
+      <td valign="middle" align="left">[<a href=
+      "accounting_toc.html#SEC_Contents" title=
+      "Table of contents">Contents</a>]</td>
+
+      <td valign="middle" align="left">[Index]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_abt.html#SEC_About" title="About (help)">?</a>
+      ]</td>
+    </tr>
+  </table>
+  <hr size="1">
+
+  <h1 class="chapter">4. <code>lastcomm</code></h1>
+
+  <p><code>lastcomm</code> prints out information about previously
+  executed commands. If no arguments are specified,
+  <code>lastcomm</code> will print info about all of the commands
+  in the <code>acct</code> file (the record file). If called with a
+  command name, user name, or tty name, only records containing
+  those items will be displayed. For example, to find out which
+  users used command <samp>`a.out'</samp> and which users were
+  logged into <samp>`tty0'</samp>, type:</p>
+
+  <p><code>lastcomm a.out tty0</code></p>
+
+  <p>This will print any entry for which <samp>`a.out'</samp> or
+  <samp>`tty0'</samp> matches in any of the record's fields
+  (command, name, or tty). If you want to find only items that
+  match ALL of the arguments on the command line, you must use the
+  '-strict-match' option. For example, to list all of the
+  executions of command <samp>`a.out'</samp> by user
+  <samp>`root'</samp> on terminal <samp>`tty0'</samp>, type:</p>
+
+  <p><code>lastcomm --strict-match a.out root tty0</code></p>
+
+  <p>The order of the arguments is not important.</p>
+
+  <p>For each entry the following information is printed:</p>
+
+  <ul>
+    <li>command name of the process</li>
+
+    <li>flags, as recorded by the system accounting routines:
+
+      <ul class="toc">
+        <li>- <strong>S</strong> command executed by
+        super-user</li>
+
+        <li>- <strong>F</strong> command executed after a fork but
+        without a following exec</li>
+
+        <li>- <strong>C</strong> command run in PDP-11
+        compatibility mode (VAX only)</li>
+
+        <li>- <strong>D</strong> command terminated with the
+        generation of a core file</li>
+
+        <li>- <strong>X</strong> command was terminated with the
+        signal SIGTERM</li>
+      </ul>
+    </li>
+
+    <li>the name of the user who ran the process</li>
+
+    <li>time the process exited</li>
+  </ul>
+  <hr size="1">
+
+  <p><span class="c16">This document was generated on <i>February,
+  6 2010</i> using <a class="c15" href=
+  "http://texi2html.cvshome.org/">texi2html
+  1.76</a>.</span><br></p>
+</body>
+</html>

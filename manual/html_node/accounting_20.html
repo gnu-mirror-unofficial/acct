@@ -1,0 +1,419 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html401/loose.dtd">
+
+<html>
+<!-- Created on February, 6 2010 by texi2html 1.76 -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Linux/x86 (vers 25 March 2009), see www.w3.org">
+
+  <title>Accounting Utilities Manual: 5.1 Flags</title>
+  <meta name="description" content=
+  "Accounting Utilities Manual: 5.1 Flags">
+  <meta name="keywords" content=
+  "Accounting Utilities Manual: 5.1 Flags">
+  <meta name="resource-type" content="document">
+  <meta name="distribution" content="global">
+  <meta name="Generator" content="texi2html 1.76">
+  <meta http-equiv="Content-Type" content=
+  "text/html; charset=us-ascii">
+  <style type="text/css">
+<!--
+  a.summary-letter {text-decoration: none}
+  pre.display {font-family: serif}
+  pre.format {font-family: serif}
+  pre.menu-comment {font-family: serif}
+  pre.menu-preformatted {font-family: serif}
+  pre.smalldisplay {font-family: serif; font-size: smaller}
+  pre.smallexample {font-size: smaller}
+  pre.smallformat {font-family: serif; font-size: smaller}
+  pre.smalllisp {font-size: smaller}
+  span.sansserif {font-family:sans-serif; font-weight:normal;}
+  ul.toc {list-style: none}
+  -->
+  </style>
+  <style type="text/css">
+body {
+  background-color: #FFFFFF;
+  color: #000000;
+  }
+  :link { color: #0000FF }
+  :visited { color: #800080 }
+  :active { color: #FF0000 }
+  span.c24 {font-size: 80%}
+  a.c23 {font-style: italic}
+  </style>
+</head>
+
+<body lang="en">
+  <a name="SEC21" id="SEC21"></a>
+
+  <table cellpadding="1" cellspacing="1" border="0">
+    <tr>
+      <td valign="middle" align="left">[ <a href=
+      "accounting_19.html#SEC20" title=
+      "Previous section in reading order">&lt;</a> ]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_21.html#SEC22" title=
+      "Next section in reading order">&gt;</a> ]</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_19.html#SEC20" title=
+      "Beginning of this chapter or previous chapter">&lt;&lt;</a>
+      ]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_19.html#SEC20" title="Up section">Up</a> ]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_23.html#SEC24" title="Next chapter">&gt;&gt;</a>
+      ]</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">[<a href=
+      "accounting.html#SEC1" title=
+      "Cover (top) of document">Top</a>]</td>
+
+      <td valign="middle" align="left">[<a href=
+      "accounting_toc.html#SEC_Contents" title=
+      "Table of contents">Contents</a>]</td>
+
+      <td valign="middle" align="left">[Index]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_abt.html#SEC_About" title="About (help)">?</a>
+      ]</td>
+    </tr>
+  </table>
+  <hr size="1">
+
+  <h2 class="section">5.1 Flags</h2>
+
+  <p>The availability of these program options depends on your
+  operating system. In specific, the members that appear in the
+  <code>struct acct</code> of your system's process accounting
+  header file (usually <code>acct.h</code>) determine which flags
+  will be present. For example, if your system's <code>struct
+  acct</code> doesn't have the <code>ac_mem</code> field, the
+  installed version of <code>sa</code> will not support the
+  <code>--sort-cpu-avmem</code>, <code>--sort-ksec</code>,
+  <code>-k</code>, or <code>-K</code> options.</p>
+
+  <p>In short, all of these flags may not be available on your
+  machine.</p>
+
+  <dl compact="compact">
+    <dt><code>-a</code></dt>
+
+    <dt><code>--list-all-names</code></dt>
+
+    <dd>
+      <p>Force <code>sa</code> not to sort those command names with
+      unprintable characters and those used only once into the
+      `<code>***other</code>' group.</p>
+    </dd>
+
+    <dt><code>-b</code></dt>
+
+    <dt><code>--sort-sys-user-div-calls</code></dt>
+
+    <dd>
+      <p>Sort the output by the sum of user and system time divided
+      by the number of calls.</p>
+    </dd>
+
+    <dt><code>-c</code></dt>
+
+    <dt><code>--percentages</code></dt>
+
+    <dd>
+      <p>Print percentages of total time for the command's user,
+      system, and real time values.</p>
+    </dd>
+
+    <dt><code>-d</code></dt>
+
+    <dt><code>--sort-avio</code></dt>
+
+    <dd>
+      <p>Sort the output by the average number of disk I/O
+      operations.</p>
+    </dd>
+
+    <dt><code>-D</code></dt>
+
+    <dt><code>--sort-tio</code></dt>
+
+    <dd>
+      <p>Print and sort the output by the total number of disk I/O
+      operations.</p>
+    </dd>
+
+    <dt><code>-f</code></dt>
+
+    <dt><code>--not-interactive</code></dt>
+
+    <dd>
+      <p>When using the <code>--threshold</code> option, assume
+      that all answers to interactive queries will be
+      affirmative.</p>
+    </dd>
+
+    <dt><code>-i</code></dt>
+
+    <dt><code>--dont-read-summary-file</code></dt>
+
+    <dd>
+      <p>Don't read the information in <code>savacct</code>.</p>
+    </dd>
+
+    <dt><code>-j</code></dt>
+
+    <dt><code>--print-seconds</code></dt>
+
+    <dd>
+      <p>Instead of printing total minutes for each category, print
+      seconds per call.</p>
+    </dd>
+
+    <dt><code>-k</code></dt>
+
+    <dt><code>--sort-cpu-avmem</code></dt>
+
+    <dd>
+      <p>Sort the output by cpu time average memory usage.</p>
+    </dd>
+
+    <dt><code>-K</code></dt>
+
+    <dt><code>--sort-ksec</code></dt>
+
+    <dd>
+      <p>Print and sort the output by the cpu-storage integral.</p>
+    </dd>
+
+    <dt><code>-l</code></dt>
+
+    <dt><code>--separate-times</code></dt>
+
+    <dd>
+      <p>Print separate columns for system and user time; usually
+      the two are added together and listed as
+      <code>cpu</code>.</p>
+    </dd>
+
+    <dt><code>-m</code></dt>
+
+    <dt><code>--user-summary</code></dt>
+
+    <dd>
+      <p>Print the number of processes and number of CPU minutes on
+      a per-user basis.</p>
+    </dd>
+
+    <dt><code>-n</code></dt>
+
+    <dt><code>--sort-num-calls</code></dt>
+
+    <dd>
+      <p>Sort the output by the number of calls. This is the
+      default sorting method.</p>
+    </dd>
+
+    <dt><code>-p</code></dt>
+
+    <dt><code>--show-paging</code></dt>
+
+    <dd>
+      <p>Print the number of minor and major pagefaults and
+      swaps.</p>
+    </dd>
+
+    <dt><code>-P</code></dt>
+
+    <dt><code>--show-paging-avg</code></dt>
+
+    <dd>
+      <p>Print the number of minor and major pagefaults and swaps
+      divided by the number of calls.</p>
+    </dd>
+
+    <dt><code>-r</code></dt>
+
+    <dt><code>--reverse-sort</code></dt>
+
+    <dd>
+      <p>Sort output items in reverse order.</p>
+    </dd>
+
+    <dt><code>-s</code></dt>
+
+    <dt><code>--merge</code></dt>
+
+    <dd>
+      <p>Merge the summarized accounting data into the summary
+      files <code>savacct</code> and <code>usracct</code>.</p>
+    </dd>
+
+    <dt><code>-t</code></dt>
+
+    <dt><code>--print-ratio</code></dt>
+
+    <dd>
+      <p>For each entry, print the ratio of real time to the sum of
+      system and user times. If the sum of system and user times is
+      too small to report--the sum is zero--<code>*ignore*</code>
+      will appear in this field.</p>
+    </dd>
+
+    <dt><code>-u</code></dt>
+
+    <dt><code>--print-users</code></dt>
+
+    <dd>
+      <p>For each command in the accounting file, print the userid
+      and command name. After printing all entries, quit.
+      <strong>Note</strong>: this flag supersedes all others.</p>
+    </dd>
+
+    <dt><code>-v <var>num</var></code></dt>
+
+    <dt><code>--threshold <var>num</var></code></dt>
+
+    <dd>
+      <p>Print commands which were executed <var>num</var> times or
+      fewer and await a reply from the terminal. If the response
+      begins with <code>y</code>, add the command to the
+      <code>**junk**</code> group.</p>
+    </dd>
+
+    <dt><code>--separate-forks</code></dt>
+
+    <dd>
+      <p>It really doesn't make any sense to me that the stock
+      version of <code>sa</code> separates statistics for a
+      particular executable depending on whether or not that
+      command forked. Therefore, GNU <code>sa</code> lumps this
+      information together unless this option is specified.</p>
+    </dd>
+
+    <dt><code>--sort-real-time</code></dt>
+
+    <dd>
+      <p>Sort the output by the "real time" (elapsed time) for each
+      command.</p>
+    </dd>
+
+    <dt><code>--ahz <var>hz</var></code></dt>
+
+    <dd>
+      <p>Use this flag to tell the program what <code>AHZ</code>
+      should be (in hertz). This option is useful if you are trying
+      to view an <code>acct</code> file created on another machine
+      which has the same byte order and file format as your current
+      machine, but has a different value for <code>AHZ</code>.</p>
+    </dd>
+
+    <dt><code>--debug</code></dt>
+
+    <dd>
+      <p>Print verbose internal information.</p>
+    </dd>
+
+    <dt><code>-V</code></dt>
+
+    <dt><code>--version</code></dt>
+
+    <dd>
+      <p>Print <code>sa</code>'s version number.</p>
+    </dd>
+
+    <dt><code>-h</code></dt>
+
+    <dt><code>--help</code></dt>
+
+    <dd>
+      <p>Print <code>sa</code>'s usage string and default locations
+      of system files to standard output.</p>
+    </dd>
+  </dl>
+
+  <p><strong>Note</strong>: if more than one sorting option is
+  specified, the list will be sorted by the one specified last on
+  the command line.</p>
+  <hr size="1">
+
+  <table cellpadding="1" cellspacing="1" border="0">
+    <tr>
+      <td valign="middle" align="left">[ <a href=
+      "accounting_19.html#SEC20" title=
+      "Previous section in reading order">&lt;</a> ]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_21.html#SEC22" title=
+      "Next section in reading order">&gt;</a> ]</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_19.html#SEC20" title=
+      "Beginning of this chapter or previous chapter">&lt;&lt;</a>
+      ]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_19.html#SEC20" title="Up section">Up</a> ]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_23.html#SEC24" title="Next chapter">&gt;&gt;</a>
+      ]</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">[<a href=
+      "accounting.html#SEC1" title=
+      "Cover (top) of document">Top</a>]</td>
+
+      <td valign="middle" align="left">[<a href=
+      "accounting_toc.html#SEC_Contents" title=
+      "Table of contents">Contents</a>]</td>
+
+      <td valign="middle" align="left">[Index]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_abt.html#SEC_About" title="About (help)">?</a>
+      ]</td>
+    </tr>
+  </table>
+
+  <p><span class="c24">This document was generated on <i>February,
+  6 2010</i> using <a class="c23" href=
+  "http://texi2html.cvshome.org/">texi2html
+  1.76</a>.</span><br></p>
+</body>
+</html>

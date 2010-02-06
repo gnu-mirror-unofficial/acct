@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html401/loose.dtd">
+
+<html>
+<!-- Created on February, 6 2010 by texi2html 1.76 -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Linux/x86 (vers 25 March 2009), see www.w3.org">
+
+  <title>Accounting Utilities Manual: Support for Multiple
+  Accounting File Formats under Linux</title>
+  <meta name="description" content=
+  "Accounting Utilities Manual: Support for Multiple Accounting File Formats under Linux">
+  <meta name="keywords" content=
+  "Accounting Utilities Manual: Support for Multiple Accounting File Formats under Linux">
+  <meta name="resource-type" content="document">
+  <meta name="distribution" content="global">
+  <meta name="Generator" content="texi2html 1.76">
+  <meta http-equiv="Content-Type" content=
+  "text/html; charset=us-ascii">
+  <style type="text/css">
+<!--
+  a.summary-letter {text-decoration: none}
+  pre.display {font-family: serif}
+  pre.format {font-family: serif}
+  pre.menu-comment {font-family: serif}
+  pre.menu-preformatted {font-family: serif}
+  pre.smalldisplay {font-family: serif; font-size: smaller}
+  pre.smallexample {font-size: smaller}
+  pre.smallformat {font-family: serif; font-size: smaller}
+  pre.smalllisp {font-size: smaller}
+  span.sansserif {font-family:sans-serif; font-weight:normal;}
+  ul.toc {list-style: none}
+  -->
+  </style>
+  <style type="text/css">
+body {
+  background-color: #FFFFFF;
+  color: #000000;
+  }
+  :link { color: #0000FF }
+  :visited { color: #800080 }
+  :active { color: #FF0000 }
+  span.c34 {font-size: 80%}
+  a.c33 {font-style: italic}
+  </style>
+</head>
+
+<body lang="en">
+  <a name="SEC3" id="SEC3"></a>
+
+  <table cellpadding="1" cellspacing="1" border="0">
+    <tr>
+      <td valign="middle" align="left">[ <a href=
+      "accounting_1.html#SEC2" title=
+      "Previous section in reading order">&lt;</a> ]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_3.html#SEC4" title=
+      "Next section in reading order">&gt;</a> ]</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting.html#SEC1" title=
+      "Beginning of this chapter or previous chapter">&lt;&lt;</a>
+      ]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting.html#SEC1" title="Up section">Up</a> ]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_4.html#SEC5" title="Next chapter">&gt;&gt;</a>
+      ]</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">[<a href=
+      "accounting.html#SEC1" title=
+      "Cover (top) of document">Top</a>]</td>
+
+      <td valign="middle" align="left">[<a href=
+      "accounting_toc.html#SEC_Contents" title=
+      "Table of contents">Contents</a>]</td>
+
+      <td valign="middle" align="left">[Index]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_abt.html#SEC_About" title="About (help)">?</a>
+      ]</td>
+    </tr>
+  </table>
+  <hr size="1">
+
+  <h2 class="unnumberedsec">Support for Multiple Accounting File
+  Formats under Linux</h2>
+
+  <p>The detailed format of the <code>acct</code> file written by
+  the Linux kernel varies depending on the kernel's version and
+  configuration: Linux kernels 2.6.7 and earlier write a v0 format
+  <code>acct</code> file which unfortunately cannot store user and
+  group ids (<code>uid</code>/<code>gid</code>) larger than 65535.
+  Kernels 2.6.8 and later write the <code>acct</code> file in v1,
+  v2 or v3 formats. (v3 if <code>BSD_PROCESS_ACCT_V3</code> is
+  selected in the kernel configuration, otherwise v1 if on the m68k
+  architecture or v2 everywhere else).</p>
+
+  <p>Since version 6.4 the GNU accounting utilities on Linux
+  systems are able to read all of the v0, v2 and v3 file formats
+  (v1 is not supported). Thus you do not need to worry about the
+  details given above. You can even read <code>acct</code> files
+  where different records were written by differently configured
+  kernels (you can find out about the format of each entry by using
+  the <code>dump-acct</code> utility). In case you ever need to
+  convert an <code>acct</code> file to a different format, the
+  <code>--raw</code> option of <code>dump-acct</code> does that
+  together with the new <code>--format</code> and
+  <code>--byteswap</code> options that determine format and byte
+  order of the output file.</p>
+
+  <p>Multiformat support under Linux is intended to be a temporary
+  solution to aid in switching to the v3 <code>acct</code> file
+  format. So do not expect GNU acct 6.7 to still contain
+  Multiformat support. In a few years time, when everybody uses the
+  v3 format, the ability to read multiple formats at runtime will
+  probably be dropped again from the GNU accounting utilities. This
+  does not, however, affect the ability to adapt to the
+  <code>acct</code> file format at compile time (when
+  <code>./configure</code> is run). Even GNU acct 6.3.5 (that does
+  not know about multiple file formats) will yield working binary
+  programs when compiled under a (as yet hypothetical) Linux kernel
+  2.6.62 that is only able to write the v3 format.</p>
+  <hr size="1">
+
+  <table cellpadding="1" cellspacing="1" border="0">
+    <tr>
+      <td valign="middle" align="left">[ <a href=
+      "accounting_1.html#SEC2" title=
+      "Previous section in reading order">&lt;</a> ]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_3.html#SEC4" title=
+      "Next section in reading order">&gt;</a> ]</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting.html#SEC1" title=
+      "Beginning of this chapter or previous chapter">&lt;&lt;</a>
+      ]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting.html#SEC1" title="Up section">Up</a> ]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_4.html#SEC5" title="Next chapter">&gt;&gt;</a>
+      ]</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">[<a href=
+      "accounting.html#SEC1" title=
+      "Cover (top) of document">Top</a>]</td>
+
+      <td valign="middle" align="left">[<a href=
+      "accounting_toc.html#SEC_Contents" title=
+      "Table of contents">Contents</a>]</td>
+
+      <td valign="middle" align="left">[Index]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_abt.html#SEC_About" title="About (help)">?</a>
+      ]</td>
+    </tr>
+  </table>
+
+  <p><span class="c34">This document was generated on <i>February,
+  6 2010</i> using <a class="c33" href=
+  "http://texi2html.cvshome.org/">texi2html
+  1.76</a>.</span><br></p>
+</body>
+</html>

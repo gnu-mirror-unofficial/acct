@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html401/loose.dtd">
+
+<html>
+<!-- Created on February, 6 2010 by texi2html 1.76 -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Linux/x86 (vers 25 March 2009), see www.w3.org">
+
+  <title>Accounting Utilities Manual: The FTP Problem</title>
+  <meta name="description" content=
+  "Accounting Utilities Manual: The FTP Problem">
+  <meta name="keywords" content=
+  "Accounting Utilities Manual: The FTP Problem">
+  <meta name="resource-type" content="document">
+  <meta name="distribution" content="global">
+  <meta name="Generator" content="texi2html 1.76">
+  <meta http-equiv="Content-Type" content=
+  "text/html; charset=us-ascii">
+  <style type="text/css">
+<!--
+  a.summary-letter {text-decoration: none}
+  pre.display {font-family: serif}
+  pre.format {font-family: serif}
+  pre.menu-comment {font-family: serif}
+  pre.menu-preformatted {font-family: serif}
+  pre.smalldisplay {font-family: serif; font-size: smaller}
+  pre.smallexample {font-size: smaller}
+  pre.smallformat {font-family: serif; font-size: smaller}
+  pre.smalllisp {font-size: smaller}
+  span.sansserif {font-family:sans-serif; font-weight:normal;}
+  ul.toc {list-style: none}
+  -->
+  </style>
+  <style type="text/css">
+body {
+  background-color: #FFFFFF;
+  color: #000000;
+  }
+  :link { color: #0000FF }
+  :visited { color: #800080 }
+  :active { color: #FF0000 }
+  span.c44 {font-size: 80%}
+  a.c43 {font-style: italic}
+  </style>
+</head>
+
+<body lang="en">
+  <a name="SEC8" id="SEC8"></a>
+
+  <table cellpadding="1" cellspacing="1" border="0">
+    <tr>
+      <td valign="middle" align="left">[ <a href=
+      "accounting_6.html#SEC7" title=
+      "Previous section in reading order">&lt;</a> ]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_8.html#SEC9" title=
+      "Next section in reading order">&gt;</a> ]</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_4.html#SEC5" title=
+      "Beginning of this chapter or previous chapter">&lt;&lt;</a>
+      ]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_6.html#SEC7" title="Up section">Up</a> ]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_10.html#SEC11" title="Next chapter">&gt;&gt;</a>
+      ]</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">[<a href=
+      "accounting.html#SEC1" title=
+      "Cover (top) of document">Top</a>]</td>
+
+      <td valign="middle" align="left">[<a href=
+      "accounting_toc.html#SEC_Contents" title=
+      "Table of contents">Contents</a>]</td>
+
+      <td valign="middle" align="left">[Index]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_abt.html#SEC_About" title="About (help)">?</a>
+      ]</td>
+    </tr>
+  </table>
+  <hr size="1">
+
+  <h4 class="unnumberedsubsubsec">The FTP Problem</h4>
+
+  <p>I've tested the standard <code>ac</code> in Ultrix 4.2
+  (DECstation/DECsystem), SunOS 4.1.1 (Sun3, Sun4, Sparc), Mach 2.5
+  (Omron/Luna), and DomainOS 10.3 (DN3500). All of these
+  <code>ac</code>s have trouble parsing entries in which the line
+  is <code>ftp</code><var>xxxx</var> (<var>xxxx</var> being some
+  number). Whenever these <code>ac</code>s see one of these
+  entries, they log everyone out at the time of the entry.</p>
+
+  <p><strong>HOW IT HAPPENS:</strong> if there is a user logged
+  into the machine when an ftp connection occurs, (minimally)
+  you'll get a login record for the user, a login record for the
+  ftp connection, and the logouts for both afterwards (in either
+  order).</p>
+
+  <p><strong>TANGIBLE RESULT:</strong> the user who was logged in
+  gets 'logged out' at the time the ftp connection begins, and none
+  of the time spent during or after the ftp connection. Therefore,
+  when you run GNU <code>ac</code>, the totals will most likely be
+  greater than those of your system's <code>ac</code> (provided you
+  specify the other flags that will make GNU <code>ac</code> behave
+  like the system's).</p>
+  <hr size="1">
+
+  <p><span class="c44">This document was generated on <i>February,
+  6 2010</i> using <a class="c43" href=
+  "http://texi2html.cvshome.org/">texi2html
+  1.76</a>.</span><br></p>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html401/loose.dtd">
+
+<html>
+<!-- Created on February, 6 2010 by texi2html 1.76 -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Linux/x86 (vers 25 March 2009), see www.w3.org">
+
+  <title>Accounting Utilities Manual: 5. sa</title>
+  <meta name="description" content=
+  "Accounting Utilities Manual: 5. sa">
+  <meta name="keywords" content=
+  "Accounting Utilities Manual: 5. sa">
+  <meta name="resource-type" content="document">
+  <meta name="distribution" content="global">
+  <meta name="Generator" content="texi2html 1.76">
+  <meta http-equiv="Content-Type" content=
+  "text/html; charset=us-ascii">
+  <style type="text/css">
+<!--
+  a.summary-letter {text-decoration: none}
+  pre.display {font-family: serif}
+  pre.format {font-family: serif}
+  pre.menu-comment {font-family: serif}
+  pre.menu-preformatted {font-family: serif}
+  pre.smalldisplay {font-family: serif; font-size: smaller}
+  pre.smallexample {font-size: smaller}
+  pre.smallformat {font-family: serif; font-size: smaller}
+  pre.smalllisp {font-size: smaller}
+  span.sansserif {font-family:sans-serif; font-weight:normal;}
+  ul.toc {list-style: none}
+  -->
+  </style>
+  <style type="text/css">
+body {
+  background-color: #FFFFFF;
+  color: #000000;
+  }
+  :link { color: #0000FF }
+  :visited { color: #800080 }
+  :active { color: #FF0000 }
+  span.c20 {font-size: 80%}
+  a.c19 {font-style: italic}
+  </style>
+</head>
+
+<body lang="en">
+  <a name="sa" id="sa"></a> <a name="SEC20" id="SEC20"></a>
+
+  <table cellpadding="1" cellspacing="1" border="0">
+    <tr>
+      <td valign="middle" align="left">[ <a href=
+      "accounting_18.html#SEC19" title=
+      "Previous section in reading order">&lt;</a> ]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_20.html#SEC21" title=
+      "Next section in reading order">&gt;</a> ]</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_17.html#SEC18" title=
+      "Beginning of this chapter or previous chapter">&lt;&lt;</a>
+      ]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting.html#SEC1" title="Up section">Up</a> ]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_23.html#SEC24" title="Next chapter">&gt;&gt;</a>
+      ]</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">[<a href=
+      "accounting.html#SEC1" title=
+      "Cover (top) of document">Top</a>]</td>
+
+      <td valign="middle" align="left">[<a href=
+      "accounting_toc.html#SEC_Contents" title=
+      "Table of contents">Contents</a>]</td>
+
+      <td valign="middle" align="left">[Index]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_abt.html#SEC_About" title="About (help)">?</a>
+      ]</td>
+    </tr>
+  </table>
+  <hr size="1">
+
+  <h1 class="chapter">5. <code>sa</code></h1>
+
+  <p><code>sa</code> summarizes information about previously
+  executed commands as recorded in the <code>acct</code> file. In
+  addition, it condenses this data into the <code>savacct</code>
+  summary file, which contains the number of times the command was
+  called and the system resources used. The information can also be
+  summarized on a per-user basis; <code>sa</code> will save this
+  information into <code>usracct</code>. Usage:</p>
+
+  <p><code>sa [<var>opts</var>] [<var>file</var>]</code></p>
+
+  <p>If no arguments are specified, <code>sa</code> will print
+  information about all of the commands in the <code>acct</code>
+  file. If command names have unprintable characters, or are only
+  called once, <code>sa</code> will sort them into a group called
+  <code>***other</code>. Overall totals for each field are gathered
+  and printed with a blank command name.</p>
+
+  <p>If called with a file name as the last argument,
+  <code>sa</code> will use that file instead of
+  <code>acct</code>.</p>
+
+  <p>By default, <code>sa</code> will sort the output by sum of
+  user and system time.</p>
+
+  <p>The output fields are labeled as follows:</p>
+
+  <dl compact="compact">
+    <dt><code>cpu</code></dt>
+
+    <dd>
+      <p>sum of system and user time in cpu seconds</p>
+    </dd>
+
+    <dt><code>re</code></dt>
+
+    <dd>
+      <p>"real time" in cpu seconds</p>
+    </dd>
+
+    <dt><code>k</code></dt>
+
+    <dd>
+      <p>cpu-time averaged core usage, in 1k units</p>
+    </dd>
+
+    <dt><code>avio</code></dt>
+
+    <dd>
+      <p>average number of I/O operations per execution</p>
+    </dd>
+
+    <dt><code>tio</code></dt>
+
+    <dd>
+      <p>total number of I/O operations</p>
+    </dd>
+
+    <dt><code>k*sec</code></dt>
+
+    <dd>
+      <p>cpu storage integral (kilo-core seconds)</p>
+    </dd>
+
+    <dt><code>u</code></dt>
+
+    <dd>
+      <p>user cpu time in cpu seconds</p>
+    </dd>
+
+    <dt><code>s</code></dt>
+
+    <dd>
+      <p>system time in cpu seconds</p>
+    </dd>
+  </dl>
+
+  <p>Note that these column titles do not appear in the first row
+  of the table, but after each numeric entry (as units of
+  measurement) in every row. For example, you might see
+  <code>79.29re</code>, meaning 79.29 cpu seconds of "real
+  time."</p>
+
+  <p>An asterisk will appear after the name of commands that forked
+  but didn't call <code>exec</code>.</p>
+  <hr size="1">
+
+  <table cellpadding="1" cellspacing="1" border="0">
+    <tr>
+      <td valign="middle" align="left">[ <a href=
+      "accounting_18.html#SEC19" title=
+      "Previous section in reading order">&lt;</a> ]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_20.html#SEC21" title=
+      "Next section in reading order">&gt;</a> ]</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_17.html#SEC18" title=
+      "Beginning of this chapter or previous chapter">&lt;&lt;</a>
+      ]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting.html#SEC1" title="Up section">Up</a> ]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_23.html#SEC24" title="Next chapter">&gt;&gt;</a>
+      ]</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">&nbsp;</td>
+
+      <td valign="middle" align="left">[<a href=
+      "accounting.html#SEC1" title=
+      "Cover (top) of document">Top</a>]</td>
+
+      <td valign="middle" align="left">[<a href=
+      "accounting_toc.html#SEC_Contents" title=
+      "Table of contents">Contents</a>]</td>
+
+      <td valign="middle" align="left">[Index]</td>
+
+      <td valign="middle" align="left">[ <a href=
+      "accounting_abt.html#SEC_About" title="About (help)">?</a>
+      ]</td>
+    </tr>
+  </table>
+
+  <p><span class="c20">This document was generated on <i>February,
+  6 2010</i> using <a class="c19" href=
+  "http://texi2html.cvshome.org/">texi2html
+  1.76</a>.</span><br></p>
+</body>
+</html>
