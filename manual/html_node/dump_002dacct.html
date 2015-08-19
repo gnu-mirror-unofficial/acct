@@ -1,0 +1,160 @@
+<html lang="en">
+<head>
+<title>dump-acct - Accounting Utilities Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Accounting Utilities Manual">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="sa.html#sa" title="sa">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+<link rel="stylesheet" type="text/css" href="/software/gnulib/manual.css">
+</head>
+<body>
+<div class="node">
+<a name="dump-acct"></a>
+<a name="dump_002dacct"></a>
+<p>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="sa.html#sa">sa</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr>
+</div>
+
+<h2 class="chapter">5 <code>dump-acct</code></h2>
+
+<p><code>dump-acct</code> dumps some of the contents of one or more <code>acct</code>
+files in human readable form.  Usage:
+
+   <p><code>dump-acct [</code><var>opts</var><code>] </code><var>files</var>
+
+   <p>Unless called with the <code>--raw</code> option, it prints a table with the
+following fields, separated by vertical bars(<code>|</code>):
+
+     <dl>
+<dt><code>ac_comm</code><dd>name of the executed program
+
+     <br><dt><code>ac_version</code><dd>version of the <code>acct</code> file format
+
+     <br><dt><code>ac_utime</code><dd>user time
+
+     <br><dt><code>ac_stime</code><dd>system time
+
+     <br><dt><code>ac_etime</code><dd>elapsed time
+
+     <br><dt><code>ac_uid</code><dd>user id
+
+     <br><dt><code>ac_gid</code><dd>group id
+
+     <br><dt><code>ac_mem</code><dd>(average) memory usage
+
+     <br><dt><code>ac_io</code><dd>number of characters transferred on input/output
+
+     <br><dt><code>ac_pid</code><dd>process id
+
+     <br><dt><code>ac_ppid</code><dd>parent's process id
+
+   </dl>
+
+   <p>All times will be given in platform dependent units (&ldquo;<code>AHZ</code>&rdquo;). 
+Not all of the above columns will actually appear, depending on what
+information your operating system provides in it's <code>struct acct</code>.
+
+<h3 class="section">5.1 Flags</h3>
+
+     <dl>
+<dt><code>--ahz </code><var>hz</var><dd>Use this flag to tell the program what <code>AHZ</code> should be (in Hertz). 
+This option is useful if you are trying to view an <code>acct</code> file
+created on another machine which has a different value for <code>AHZ</code>.
+
+     <br><dt><code>--byteswap</code><dd>Swap the bytes (relative to your system's native byte order) in
+<code>--raw</code> output.
+
+     <br><dt><code>--format</code><dd>Set output format with <code>--raw</code> option.
+
+     <br><dt><code>-n </code><var>num</var><dt><code>--num </code><var>num</var><dd>Limit the number of lines (or records with <code>--raw</code>) to print.
+
+     <br><dt><code>-r</code><dt><code>--reverse</code><dd>Read the accounting file backwards (print latest record first).
+
+     <br><dt><code>-R</code><dt><code>--raw</code><dd>Don't print human readable output, dump the raw record instead. 
+Useful to convert between different Linux file formats (see below).
+
+     <br><dt><code>-h</code><dt><code>--help</code><dd>Print <code>dump-acct</code>'s usage string and default location of
+the accouning file to standard output.
+
+</dl>
+
+   <p><code>--byteswap</code> and <code>--format</code> options are only available with
+Linux multiformat support. They only affect <em>output</em> with
+the <code>--raw</code> option, format and byte order of the input are
+automatically detected. 
+Thus they are useful to convert between different file formats.
+
+   <p>The <code>--ahz</code> option affects input and output (except for v3 file
+format, which by definition is fixed to <code>AHZ=100</code>). 
+If you ever need to convert between different <code>AHZ</code> values,
+use a two-step process:
+First convert to v3 format with the <em>old</em> <code>AHZ</code> value, then
+convert to the desired output format with the <em>new</em> <code>AHZ</code>
+setting.
+
+<!--  -->
+<!-- @node Index,  , dump-acct, Top -->
+<!-- @unnumbered Index -->
+<!-- @printindex cp -->
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Preface" href="Preface.html#Preface">Preface</a>
+<ul>
+<li><a href="Preface.html#Preface">A Note on File Names and Locations</a>
+<li><a href="Preface.html#Preface">Support for Multiple Accounting File Formats under Linux</a>
+<li><a href="Preface.html#Preface">History of the Accounting Utilities</a>
+</li></ul>
+<li><a name="toc_ac" href="ac.html#ac">1 <code>ac</code></a>
+<ul>
+<li><a href="ac.html#ac">1.1 Flags</a>
+<li><a href="ac.html#ac">1.2 Problems</a>
+<ul>
+<li><a href="ac.html#ac">The FTP Problem</a>
+<ul>
+<li><a href="ac.html#ac">The Shutdown/Reboot Problem</a>
+<li><a href="ac.html#ac">Stupid System V Machines</a>
+</li></ul>
+</li></ul>
+</li></ul>
+<li><a name="toc_accton" href="accton.html#accton">2 <code>accton</code></a>
+<ul>
+<li><a href="accton.html#accton">2.1 Flags</a>
+</li></ul>
+<li><a name="toc_lastcomm" href="lastcomm.html#lastcomm">3 <code>lastcomm</code></a>
+<ul>
+<li><a href="lastcomm.html#lastcomm">3.1 Flags</a>
+</li></ul>
+<li><a name="toc_sa" href="sa.html#sa">4 <code>sa</code></a>
+<ul>
+<li><a href="sa.html#sa">4.1 Flags</a>
+<li><a href="sa.html#sa">4.2 Problems</a>
+<ul>
+<li><a href="sa.html#sa">4.2.1 mips sa</a>
+</li></ul>
+</li></ul>
+<li><a name="toc_dump_002dacct" href="dump_002dacct.html#dump_002dacct">5 <code>dump-acct</code></a>
+<ul>
+<li><a href="dump_002dacct.html#dump_002dacct">5.1 Flags</a>
+</li></ul>
+</li></ul>
+</div>
+
+</body></html>
+
